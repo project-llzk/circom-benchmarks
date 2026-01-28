@@ -1,0 +1,10 @@
+outputs/
+.idea
+tests/Output
+.lit_test_times.txt
+.DS_Store
+tags/
+*.swp
+.artifacts
+node_modules
+benchmark_reports

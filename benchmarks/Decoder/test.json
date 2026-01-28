@@ -1,0 +1,17 @@
+{
+    "id": "Decoder",
+	"source": "ZKSolid",
+	"project_url": "https://github.com/Veridise/ZKSolid/tree/main/benchmarks/knownbugs",
+	"commit": "",
+    "internal": false,
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "Decoder",
+			"file": "src/multiplexer.circom",
+			"template": "Decoder",
+			"main": "src/main.circom",
+			"description": "Output signals `out` and `success` are underconstrained."
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+    "id": "WindowMulFix",
+	"source": "ZKSolid",
+	"project_url": "https://github.com/Veridise/ZKSolid/tree/main/benchmarks/circomlib-cff5ab6",
+	"commit": "",
+    "internal": false,
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "WindowMulFix",
+			"file": "src/escalarmulfix.circom",
+			"template": "WindowMulFix",
+			"main": "src/main.circom",
+			"description": "Output signals `out` and `out8` are underconstrained."
+		}
+	]
+}

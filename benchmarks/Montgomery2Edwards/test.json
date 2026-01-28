@@ -1,0 +1,17 @@
+{
+    "id": "Montgomery2Edwards",
+	"source": "ZKSolid",
+	"project_url": "https://github.com/Veridise/ZKSolid/tree/main/benchmarks/circomlib-cff5ab6",
+	"commit": "",
+    "internal": false,
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "Montgomery2Edwards",
+			"file": "src/montgomery.circom",
+			"template": "Montgomery2Edwards",
+			"main": "src/main.circom",
+			"description": "Output signal `out` is underconstrained."
+		}
+	]
+}
