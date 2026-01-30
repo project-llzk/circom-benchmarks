@@ -1,0 +1,204 @@
+{
+    "id": "iden3-core",
+	"source": "ZKSolid",
+    "synthetic": false,
+	"tests": [
+        {
+          "id": "auth",
+          "file": "src/auth.circom",
+          "template": "auth.circom",
+          "main": "src/auth.circom",
+          "description": ""
+        },
+        {
+          "id": "authTest",
+          "file": "src/authTest.circom",
+          "template": "authTest.circom",
+          "main": "src/authTest.circom",
+          "description": ""
+        },
+        {
+          "id": "authWithRelayTest",
+          "file": "src/authWithRelayTest.circom",
+          "template": "authWithRelayTest.circom",
+          "main": "src/authWithRelayTest.circom",
+          "description": ""
+        },
+        {
+          "id": "credentialAtomicQueryMTP",
+          "file": "src/credentialAtomicQueryMTP.circom",
+          "template": "credentialAtomicQueryMTP.circom",
+          "main": "src/credentialAtomicQueryMTP.circom",
+          "description": ""
+        },
+        {
+          "id": "credentialAtomicQueryMTPTest",
+          "file": "src/credentialAtomicQueryMTPTest.circom",
+          "template": "credentialAtomicQueryMTPTest.circom",
+          "main": "src/credentialAtomicQueryMTPTest.circom",
+          "description": ""
+        },
+        {
+          "id": "credentialAtomicQueryMTPWithRelay",
+          "file": "src/credentialAtomicQueryMTPWithRelay.circom",
+          "template": "credentialAtomicQueryMTPWithRelay.circom",
+          "main": "src/credentialAtomicQueryMTPWithRelay.circom",
+          "description": ""
+        },
+        {
+          "id": "credentialAtomicQueryMTPWithRelayTest",
+          "file": "src/credentialAtomicQueryMTPWithRelayTest.circom",
+          "template": "credentialAtomicQueryMTPWithRelayTest.circom",
+          "main": "src/credentialAtomicQueryMTPWithRelayTest.circom",
+          "description": ""
+        },
+        {
+          "id": "credentialAtomicQuerySig",
+          "file": "src/credentialAtomicQuerySig.circom",
+          "template": "credentialAtomicQuerySig.circom",
+          "main": "src/credentialAtomicQuerySig.circom",
+          "description": ""
+        },
+        {
+          "id": "credentialAtomicQuerySigTest",
+          "file": "src/credentialAtomicQuerySigTest.circom",
+          "template": "credentialAtomicQuerySigTest.circom",
+          "main": "src/credentialAtomicQuerySigTest.circom",
+          "description": ""
+        },
+        {
+          "id": "idOwnershipBySignatureTest",
+          "file": "src/idOwnershipBySignatureTest.circom",
+          "template": "idOwnershipBySignatureTest.circom",
+          "main": "src/idOwnershipBySignatureTest.circom",
+          "description": ""
+        },
+        {
+          "id": "idOwnershipBySignatureWithRelayTest",
+          "file": "src/idOwnershipBySignatureWithRelayTest.circom",
+          "template": "idOwnershipBySignatureWithRelayTest.circom",
+          "main": "src/idOwnershipBySignatureWithRelayTest.circom",
+          "description": ""
+        },
+        {
+          "id": "inTest",
+          "file": "src/inTest.circom",
+          "template": "inTest.circom",
+          "main": "src/inTest.circom",
+          "description": ""
+        },
+        {
+          "id": "poseidon",
+          "file": "src/poseidon.circom",
+          "template": "poseidon.circom",
+          "main": "src/poseidon.circom",
+          "description": ""
+        },
+        {
+          "id": "poseidon14",
+          "file": "src/poseidon14.circom",
+          "template": "poseidon14.circom",
+          "main": "src/poseidon14.circom",
+          "description": ""
+        },
+        {
+          "id": "poseidon16",
+          "file": "src/poseidon16.circom",
+          "template": "poseidon16.circom",
+          "main": "src/poseidon16.circom",
+          "description": ""
+        },
+        {
+          "id": "queryTest",
+          "file": "src/queryTest.circom",
+          "template": "queryTest.circom",
+          "main": "src/queryTest.circom",
+          "description": ""
+        },
+        {
+          "id": "stateTransition",
+          "file": "src/stateTransition.circom",
+          "template": "stateTransition.circom",
+          "main": "src/stateTransition.circom",
+          "description": ""
+        },
+        {
+          "id": "stateTransitionTest",
+          "file": "src/stateTransitionTest.circom",
+          "template": "stateTransitionTest.circom",
+          "main": "src/stateTransitionTest.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_GetValueByIndex",
+          "file": "src/utils_GetValueByIndex.circom",
+          "template": "utils_GetValueByIndex.circom",
+          "main": "src/utils_GetValueByIndex.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_checkIdenStateMatchesRoots",
+          "file": "src/utils_checkIdenStateMatchesRoots.circom",
+          "template": "utils_checkIdenStateMatchesRoots.circom",
+          "main": "src/utils_checkIdenStateMatchesRoots.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_getClaimExpiration",
+          "file": "src/utils_getClaimExpiration.circom",
+          "template": "utils_getClaimExpiration.circom",
+          "main": "src/utils_getClaimExpiration.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_getClaimSubjectOtherIden",
+          "file": "src/utils_getClaimSubjectOtherIden.circom",
+          "template": "utils_getClaimSubjectOtherIden.circom",
+          "main": "src/utils_getClaimSubjectOtherIden.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_getSubjectLocation",
+          "file": "src/utils_getSubjectLocation.circom",
+          "template": "utils_getSubjectLocation.circom",
+          "main": "src/utils_getSubjectLocation.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_isExpirable",
+          "file": "src/utils_isExpirable.circom",
+          "template": "utils_isExpirable.circom",
+          "main": "src/utils_isExpirable.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_isUpdatable",
+          "file": "src/utils_isUpdatable.circom",
+          "template": "utils_isUpdatable.circom",
+          "main": "src/utils_isUpdatable.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_verifyClaimSignature",
+          "file": "src/utils_verifyClaimSignature.circom",
+          "template": "utils_verifyClaimSignature.circom",
+          "main": "src/utils_verifyClaimSignature.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_verifyCredentialSubject",
+          "file": "src/utils_verifyCredentialSubject.circom",
+          "template": "utils_verifyCredentialSubject.circom",
+          "main": "src/utils_verifyCredentialSubject.circom",
+          "description": ""
+        },
+        {
+          "id": "utils_verifyExpirationTime",
+          "file": "src/utils_verifyExpirationTime.circom",
+          "template": "utils_verifyExpirationTime.circom",
+          "main": "src/utils_verifyExpirationTime.circom",
+          "description": ""
+        }
+      ]
+      
+}

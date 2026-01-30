@@ -1,0 +1,15 @@
+{
+    "id": "Num2Bits",
+	"source": "ZKSolid",
+	"commit": "",
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "Num2Bits",
+			"file": "src/Num2Bits.circom",
+			"template": "Num2Bits",
+			"main": "src/main.circom",
+			"description": "Output signal `out` is underconstrained when n is greater than or equal to 254."
+		}
+	]
+}

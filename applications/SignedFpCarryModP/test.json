@@ -1,0 +1,15 @@
+{
+    "id": "SignedFpCarryModP",
+	"source": "ZKSolid",
+	"commit": "",
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "SignedFpCarryModP",
+			"file": "src/fp.circom",
+			"template": "SignedFpCarryModP",
+			"main": "src/main.circom",
+			"description": "Output signals `out` and `X` are underconstrained."
+		}
+	]
+}

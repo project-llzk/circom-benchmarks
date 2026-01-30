@@ -1,0 +1,106 @@
+{
+    "id": "keccak256-circom",
+	"source": "ZKSolid",
+    "synthetic": false,
+	"tests": [
+        {
+          "id": "absorb_test",
+          "file": "src/absorb_test.circom",
+          "template": "absorb_test.circom",
+          "main": "src/absorb_test.circom",
+          "description": ""
+        },
+        {
+          "id": "chi_test",
+          "file": "src/chi_test.circom",
+          "template": "chi_test.circom",
+          "main": "src/chi_test.circom",
+          "description": ""
+        },
+        {
+          "id": "final_test",
+          "file": "src/final_test.circom",
+          "template": "final_test.circom",
+          "main": "src/final_test.circom",
+          "description": ""
+        },
+        {
+          "id": "iota10_test",
+          "file": "src/iota10_test.circom",
+          "template": "iota10_test.circom",
+          "main": "src/iota10_test.circom",
+          "description": ""
+        },
+        {
+          "id": "iota3_test",
+          "file": "src/iota3_test.circom",
+          "template": "iota3_test.circom",
+          "main": "src/iota3_test.circom",
+          "description": ""
+        },
+        {
+          "id": "keccak_256_256_test",
+          "file": "src/keccak_256_256_test.circom",
+          "template": "keccak_256_256_test.circom",
+          "main": "src/keccak_256_256_test.circom",
+          "description": ""
+        },
+        {
+          "id": "keccak_32_256_test",
+          "file": "src/keccak_32_256_test.circom",
+          "template": "keccak_32_256_test.circom",
+          "main": "src/keccak_32_256_test.circom",
+          "description": ""
+        },
+        {
+          "id": "keccakfRound0_test",
+          "file": "src/keccakfRound0_test.circom",
+          "template": "keccakfRound0_test.circom",
+          "main": "src/keccakfRound0_test.circom",
+          "description": ""
+        },
+        {
+          "id": "keccakfRound20_test",
+          "file": "src/keccakfRound20_test.circom",
+          "template": "keccakfRound20_test.circom",
+          "main": "src/keccakfRound20_test.circom",
+          "description": ""
+        },
+        {
+          "id": "keccakf_test",
+          "file": "src/keccakf_test.circom",
+          "template": "keccakf_test.circom",
+          "main": "src/keccakf_test.circom",
+          "description": ""
+        },
+        {
+          "id": "pad_test",
+          "file": "src/pad_test.circom",
+          "template": "pad_test.circom",
+          "main": "src/pad_test.circom",
+          "description": ""
+        },
+        {
+          "id": "rhopi_test",
+          "file": "src/rhopi_test.circom",
+          "template": "rhopi_test.circom",
+          "main": "src/rhopi_test.circom",
+          "description": ""
+        },
+        {
+          "id": "squeeze_test",
+          "file": "src/squeeze_test.circom",
+          "template": "squeeze_test.circom",
+          "main": "src/squeeze_test.circom",
+          "description": ""
+        },
+        {
+          "id": "theta_test",
+          "file": "src/theta_test.circom",
+          "template": "theta_test.circom",
+          "main": "src/theta_test.circom",
+          "description": ""
+        }
+      ]
+      
+}

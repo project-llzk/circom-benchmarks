@@ -1,0 +1,1976 @@
+[
+  {
+    "benchmark name": "BinSum",
+    "path": "applications/BinSum/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "BitElementMulAny",
+    "path": "applications/BitElementMulAny/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Decoder",
+    "path": "applications/Decoder/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Edwards2Montgomery",
+    "path": "applications/Edwards2Montgomery/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "EmulatedAesencSubstituteBytes",
+    "path": "applications/EmulatedAesencSubstituteBytes/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "FpMultiply",
+    "path": "applications/FpMultiply/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "LessThanBounded",
+    "path": "applications/LessThanBounded/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Montgomery2Edwards",
+    "path": "applications/Montgomery2Edwards/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "MontgomeryAdd",
+    "path": "applications/MontgomeryAdd/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "MontgomeryDouble",
+    "path": "applications/MontgomeryDouble/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Num2Bits",
+    "path": "applications/Num2Bits/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Num2BitsCheck",
+    "path": "applications/Num2BitsCheck/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "PointCompress",
+    "path": "applications/PointCompress/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "SignedFpCarryModP",
+    "path": "applications/SignedFpCarryModP/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchMerkleTreeUpdate_16",
+    "path": "applications/Webb-tools/test/batchMerkleTreeUpdate_16.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchMerkleTreeUpdate_32",
+    "path": "applications/Webb-tools/test/batchMerkleTreeUpdate_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchMerkleTreeUpdate_4",
+    "path": "applications/Webb-tools/test/batchMerkleTreeUpdate_4.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchMerkleTreeUpdate_64",
+    "path": "applications/Webb-tools/test/batchMerkleTreeUpdate_64.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchMerkleTreeUpdate_8",
+    "path": "applications/Webb-tools/test/batchMerkleTreeUpdate_8.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon_vanchor_16_2",
+    "path": "applications/Webb-tools/test/poseidon_vanchor_16_2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon_vanchor_16_8",
+    "path": "applications/Webb-tools/test/poseidon_vanchor_16_8.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon_vanchor_2_2",
+    "path": "applications/Webb-tools/test/poseidon_vanchor_2_2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon_vanchor_2_8",
+    "path": "applications/Webb-tools/test/poseidon_vanchor_2_8.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "vanchor_forest_16_2",
+    "path": "applications/Webb-tools/test/vanchor_forest_16_2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "vanchor_forest_16_8",
+    "path": "applications/Webb-tools/test/vanchor_forest_16_8.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "vanchor_forest_2_2",
+    "path": "applications/Webb-tools/test/vanchor_forest_2_2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "vanchor_forest_2_8",
+    "path": "applications/Webb-tools/test/vanchor_forest_2_8.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Window4",
+    "path": "applications/Window4/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "WindowMulFix",
+    "path": "applications/WindowMulFix/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "aes_256_ctr_test",
+    "path": "applications/aes-circom/src/aes_256_ctr_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "aes_256_encrypt_test",
+    "path": "applications/aes-circom/src/aes_256_encrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "aes_256_key_expansion_test",
+    "path": "applications/aes-circom/src/aes_256_key_expansion_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "gcm_siv_dec_2_keys_test",
+    "path": "applications/aes-circom/src/gcm_siv_dec_2_keys_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "gcm_siv_enc_2_keys_test",
+    "path": "applications/aes-circom/src/gcm_siv_enc_2_keys_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "gfmul_int_test",
+    "path": "applications/aes-circom/src/gfmul_int_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mul_test",
+    "path": "applications/aes-circom/src/mul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "polyval_test",
+    "path": "applications/aes-circom/src/polyval_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "fulladder",
+    "path": "applications/fulladder/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "hydra-s1",
+    "path": "applications/hydra/src/hydra-s1.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "verify-hydra-commitment",
+    "path": "applications/hydra/src/verify-hydra-commitment.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "verify-merkle-path",
+    "path": "applications/hydra/src/verify-merkle-path.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "auth",
+    "path": "applications/iden3-core/src/auth.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "authTest",
+    "path": "applications/iden3-core/src/authTest.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "authWithRelayTest",
+    "path": "applications/iden3-core/src/authWithRelayTest.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "idOwnershipBySignatureTest",
+    "path": "applications/iden3-core/src/idOwnershipBySignatureTest.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "idOwnershipBySignatureWithRelayTest",
+    "path": "applications/iden3-core/src/idOwnershipBySignatureWithRelayTest.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "inTest",
+    "path": "applications/iden3-core/src/inTest.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon",
+    "path": "applications/iden3-core/src/poseidon.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon14",
+    "path": "applications/iden3-core/src/poseidon14.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon16",
+    "path": "applications/iden3-core/src/poseidon16.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "queryTest",
+    "path": "applications/iden3-core/src/queryTest.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "stateTransition",
+    "path": "applications/iden3-core/src/stateTransition.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "stateTransitionTest",
+    "path": "applications/iden3-core/src/stateTransitionTest.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_GetValueByIndex",
+    "path": "applications/iden3-core/src/utils_GetValueByIndex.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_checkIdenStateMatchesRoots",
+    "path": "applications/iden3-core/src/utils_checkIdenStateMatchesRoots.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_getClaimExpiration",
+    "path": "applications/iden3-core/src/utils_getClaimExpiration.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_getClaimSubjectOtherIden",
+    "path": "applications/iden3-core/src/utils_getClaimSubjectOtherIden.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_getSubjectLocation",
+    "path": "applications/iden3-core/src/utils_getSubjectLocation.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_isExpirable",
+    "path": "applications/iden3-core/src/utils_isExpirable.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_isUpdatable",
+    "path": "applications/iden3-core/src/utils_isUpdatable.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_verifyClaimSignature",
+    "path": "applications/iden3-core/src/utils_verifyClaimSignature.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_verifyCredentialSubject",
+    "path": "applications/iden3-core/src/utils_verifyCredentialSubject.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "utils_verifyExpirationTime",
+    "path": "applications/iden3-core/src/utils_verifyExpirationTime.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "absorb_test",
+    "path": "applications/keccak256-circom/src/absorb_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "chi_test",
+    "path": "applications/keccak256-circom/src/chi_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "final_test",
+    "path": "applications/keccak256-circom/src/final_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "iota10_test",
+    "path": "applications/keccak256-circom/src/iota10_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "iota3_test",
+    "path": "applications/keccak256-circom/src/iota3_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "keccak_256_256_test",
+    "path": "applications/keccak256-circom/src/keccak_256_256_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "keccak_32_256_test",
+    "path": "applications/keccak256-circom/src/keccak_32_256_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "keccakfRound0_test",
+    "path": "applications/keccak256-circom/src/keccakfRound0_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "keccakfRound20_test",
+    "path": "applications/keccak256-circom/src/keccakfRound20_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "keccakf_test",
+    "path": "applications/keccak256-circom/src/keccakf_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "pad_test",
+    "path": "applications/keccak256-circom/src/pad_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "rhopi_test",
+    "path": "applications/keccak256-circom/src/rhopi_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "squeeze_test",
+    "path": "applications/keccak256-circom/src/squeeze_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "theta_test",
+    "path": "applications/keccak256-circom/src/theta_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchUpdateStateTree_32",
+    "path": "applications/maci/src/batchUpdateStateTree_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchUpdateStateTree_32_batch16",
+    "path": "applications/maci/src/batchUpdateStateTree_32_batch16.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchUpdateStateTree_32_batch256",
+    "path": "applications/maci/src/batchUpdateStateTree_32_batch256.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchUpdateStateTree_large",
+    "path": "applications/maci/src/batchUpdateStateTree_large.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchUpdateStateTree_medium",
+    "path": "applications/maci/src/batchUpdateStateTree_medium.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchUpdateStateTree_small",
+    "path": "applications/maci/src/batchUpdateStateTree_small.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "batchUpdateStateTree_test",
+    "path": "applications/maci/src/batchUpdateStateTree_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "calculateTotal_test",
+    "path": "applications/maci/src/calculateTotal_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "decrypt_test",
+    "path": "applications/maci/src/decrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "ecdh_test",
+    "path": "applications/maci/src/ecdh_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "hasher11_test",
+    "path": "applications/maci/src/hasher11_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "hasher5_test",
+    "path": "applications/maci/src/hasher5_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "hashleftright_test",
+    "path": "applications/maci/src/hashleftright_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "merkleTreeCheckRoot_test",
+    "path": "applications/maci/src/merkleTreeCheckRoot_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "merkleTreeInclusionProof_test",
+    "path": "applications/maci/src/merkleTreeInclusionProof_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "merkleTreeLeafExists_test",
+    "path": "applications/maci/src/merkleTreeLeafExists_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "performChecksBeforeUpdate_test",
+    "path": "applications/maci/src/performChecksBeforeUpdate_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "publicKey_test",
+    "path": "applications/maci/src/publicKey_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quadVoteTally_32",
+    "path": "applications/maci/src/quadVoteTally_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quadVoteTally_32_batch16",
+    "path": "applications/maci/src/quadVoteTally_32_batch16.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quadVoteTally_32_batch256",
+    "path": "applications/maci/src/quadVoteTally_32_batch256.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quadVoteTally_large",
+    "path": "applications/maci/src/quadVoteTally_large.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quadVoteTally_medium",
+    "path": "applications/maci/src/quadVoteTally_medium.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quadVoteTally_small",
+    "path": "applications/maci/src/quadVoteTally_small.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quadVoteTally_test",
+    "path": "applications/maci/src/quadVoteTally_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quinGeneratePathIndices_test",
+    "path": "applications/maci/src/quinGeneratePathIndices_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quinSelector_test",
+    "path": "applications/maci/src/quinSelector_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quinTreeCheckRoot_test",
+    "path": "applications/maci/src/quinTreeCheckRoot_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quinTreeInclusionProof_test",
+    "path": "applications/maci/src/quinTreeInclusionProof_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "quinTreeLeafExists_test",
+    "path": "applications/maci/src/quinTreeLeafExists_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "resultCommitmentVerifier_test",
+    "path": "applications/maci/src/resultCommitmentVerifier_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "splicer_test",
+    "path": "applications/maci/src/splicer_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "updateStateTree_test",
+    "path": "applications/maci/src/updateStateTree_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "verifySignature_test",
+    "path": "applications/maci/src/verifySignature_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "onlycarry",
+    "path": "applications/onlycarry/src/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "semaphore",
+    "path": "applications/semaphore/src/semaphore.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "delete",
+    "path": "applications/zk-SQL/src/delete.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "insert",
+    "path": "applications/zk-SQL/src/insert.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "select",
+    "path": "applications/zk-SQL/src/select.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "update",
+    "path": "applications/zk-SQL/src/update.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "circomlib",
+    "path": "libs/circomlib/circuits/sha256/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matAdd_test",
+    "path": "libs/circomlib-matrix/test/circuits/matAdd_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matElemMul_test",
+    "path": "libs/circomlib-matrix/test/circuits/matElemMul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matElemPow_test",
+    "path": "libs/circomlib-matrix/test/circuits/matElemPow_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matMul_test",
+    "path": "libs/circomlib-matrix/test/circuits/matMul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matPow_test",
+    "path": "libs/circomlib-matrix/test/circuits/matPow_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matScalarAdd_test",
+    "path": "libs/circomlib-matrix/test/circuits/matScalarAdd_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matScalarMul_test",
+    "path": "libs/circomlib-matrix/test/circuits/matScalarMul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matScalarSub_test",
+    "path": "libs/circomlib-matrix/test/circuits/matScalarSub_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matSub_test",
+    "path": "libs/circomlib-matrix/test/circuits/matSub_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "outer_test",
+    "path": "libs/circomlib-matrix/test/circuits/outer_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "trace_test",
+    "path": "libs/circomlib-matrix/test/circuits/trace_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "tranpose_test",
+    "path": "libs/circomlib-matrix/test/circuits/tranpose_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "AveragePooling2D_stride_test",
+    "path": "libs/circomlib-ml/test/circuits/AveragePooling2D_stride_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "AveragePooling2D_test",
+    "path": "libs/circomlib-ml/test/circuits/AveragePooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "BatchNormalization_test",
+    "path": "libs/circomlib-ml/test/circuits/BatchNormalization_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Conv1D_test",
+    "path": "libs/circomlib-ml/test/circuits/Conv1D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Conv2D_stride_test",
+    "path": "libs/circomlib-ml/test/circuits/Conv2D_stride_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Conv2D_test",
+    "path": "libs/circomlib-ml/test/circuits/Conv2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Dense_test",
+    "path": "libs/circomlib-ml/test/circuits/Dense_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Flatten2D_test",
+    "path": "libs/circomlib-ml/test/circuits/Flatten2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "GlobalAveragePooling2D_test",
+    "path": "libs/circomlib-ml/test/circuits/GlobalAveragePooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "GlobalMaxPooling2D_test",
+    "path": "libs/circomlib-ml/test/circuits/GlobalMaxPooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "IsNegative_test",
+    "path": "libs/circomlib-ml/test/circuits/IsNegative_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "IsPositive_test",
+    "path": "libs/circomlib-ml/test/circuits/IsPositive_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "MaxPooling2D_stride_test",
+    "path": "libs/circomlib-ml/test/circuits/MaxPooling2D_stride_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "MaxPooling2D_test",
+    "path": "libs/circomlib-ml/test/circuits/MaxPooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Max_test",
+    "path": "libs/circomlib-ml/test/circuits/Max_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "ReLU_test",
+    "path": "libs/circomlib-ml/test/circuits/ReLU_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "SumPooling2D_stride_test",
+    "path": "libs/circomlib-ml/test/circuits/SumPooling2D_stride_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "SumPooling2D_test",
+    "path": "libs/circomlib-ml/test/circuits/SumPooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "decryptMultiple_test",
+    "path": "libs/circomlib-ml/test/circuits/decryptMultiple_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "decrypt_test",
+    "path": "libs/circomlib-ml/test/circuits/decrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "ecdh_test",
+    "path": "libs/circomlib-ml/test/circuits/ecdh_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "encryptDecrypt_test",
+    "path": "libs/circomlib-ml/test/circuits/encryptDecrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "encryptMultiple_test",
+    "path": "libs/circomlib-ml/test/circuits/encryptMultiple_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "encrypt_test",
+    "path": "libs/circomlib-ml/test/circuits/encrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "encrypted_mnist_latest_test",
+    "path": "libs/circomlib-ml/test/circuits/encrypted_mnist_latest_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mnist_convnet_test",
+    "path": "libs/circomlib-ml/test/circuits/mnist_convnet_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mnist_latest_precision_test",
+    "path": "libs/circomlib-ml/test/circuits/mnist_latest_precision_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mnist_latest_test",
+    "path": "libs/circomlib-ml/test/circuits/mnist_latest_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mnist_test",
+    "path": "libs/circomlib-ml/test/circuits/mnist_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "model1_test",
+    "path": "libs/circomlib-ml/test/circuits/model1_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "publicKey_test",
+    "path": "libs/circomlib-ml/test/circuits/publicKey_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "aes_256_ctr_test",
+    "path": "libs/zksolid-libs/aes-circom-0784f74/test/circuits/aes_256_ctr_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "aes_256_encrypt_test",
+    "path": "libs/zksolid-libs/aes-circom-0784f74/test/circuits/aes_256_encrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "aes_256_key_expansion_test",
+    "path": "libs/zksolid-libs/aes-circom-0784f74/test/circuits/aes_256_key_expansion_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "gcm_siv_dec_2_keys_test",
+    "path": "libs/zksolid-libs/aes-circom-0784f74/test/circuits/gcm_siv_dec_2_keys_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "gcm_siv_enc_2_keys_test",
+    "path": "libs/zksolid-libs/aes-circom-0784f74/test/circuits/gcm_siv_enc_2_keys_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "gfmul_int_test",
+    "path": "libs/zksolid-libs/aes-circom-0784f74/test/circuits/gfmul_int_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mul_test",
+    "path": "libs/zksolid-libs/aes-circom-0784f74/test/circuits/mul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "polyval_test",
+    "path": "libs/zksolid-libs/aes-circom-0784f74/test/circuits/polyval_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "eth_addr",
+    "path": "libs/zksolid-libs/circom-ecdsa/scripts/eth_addr/eth_addr.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "groupsig",
+    "path": "libs/zksolid-libs/circom-ecdsa/scripts/groupsig/groupsig.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "pubkeygen",
+    "path": "libs/zksolid-libs/circom-ecdsa/scripts/pubkeygen/pubkeygen.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "verify",
+    "path": "libs/zksolid-libs/circom-ecdsa/scripts/verify/verify.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigadd_15",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigadd_15.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigadd_23",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigadd_23.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_biglessthan_23",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_biglessthan_23.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigmod_22",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigmod_22.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigmod_32",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigmod_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigmult_21",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigmult_21.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigmult_22",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigmult_22.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigmult_23",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigmult_23.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigsub_15",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigsub_15.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigsub_23",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigsub_23.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bigsubmodp_32",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_bigsubmodp_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_ecdsa",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_ecdsa.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_ecdsa_verify",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_ecdsa_verify.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_secp256k1_add",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_secp256k1_add.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_secp256k1_double",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_secp256k1_double.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_secp256k1_poc",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_secp256k1_poc.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_secp256k1_scalarmult",
+    "path": "libs/zksolid-libs/circom-ecdsa/test/circuits/test_secp256k1_scalarmult.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "addfp2",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/addfp2/addfp2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "dev",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/dev/dev.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "finalexp",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/finalexp/finalexp.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "fp12multiply",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/fp12multiply/fp12multiply.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "linefunctionequal",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/linefunctionequal/linefunctionequal.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "linefunctionequal_35_11",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/linefunctionequal/linefunctionequal_35_11.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "maptoG2",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/maptoG2/maptoG2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "millerloop_35_11",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/millerloop/millerloop_35_11.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "millerloop_55_7",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/millerloop/millerloop_55_7.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "millerloopfp2",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/millerloopfp2/millerloopfp2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "optimalate",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/optimalate/optimalate.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "signature",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/signature/signature.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "subgroupcheckG1",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/subgroupcheckG1/subgroupcheckG1.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "subgroupcheckG2",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/subgroupcheckG2/subgroupcheckG2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "tatepairing",
+    "path": "libs/zksolid-libs/circom-pairing/scripts/tatepairing/tatepairing.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bls12-381_add",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_bls12-381_add.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_bls12-381_double",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_bls12-381_double.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp12_add_22",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_add_22.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp12_compression_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_compression_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp12_cyclotomicExp_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_cyclotomicExp_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp12_cyclotomicSquare_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_cyclotomicSquare_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp12_invert_42",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_invert_42.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp12_multiply2_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_multiply2_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp12_multiply_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_multiply_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp12_pow4_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_pow4_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp2_add_22",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp2_add_22.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp2_invert_42",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp2_invert_42.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_fp2_multiply_42",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp2_multiply_42.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_linefunc_equal_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_linefunc_equal_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_linefunc_unequal_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_linefunc_unequal_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_multiply_linefunc_equal_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_multiply_linefunc_equal_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_multiply_linefunc_unequal_32",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_multiply_linefunc_unequal_32.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_secp256k1_add",
+    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_secp256k1_add.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "zksolid-libs",
+    "path": "libs/zksolid-libs/circomlib/circuits/sha256/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "aliascheck_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/aliascheck_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "babyadd_tester",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/babyadd_tester.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "babycheck_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/babycheck_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "babypbk_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/babypbk_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "binsub_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/binsub_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "constants_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/constants_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "eddsa_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/eddsa_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "eddsamimc_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/eddsamimc_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "eddsaposeidon_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/eddsaposeidon_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "edwards2montgomery",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/edwards2montgomery.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "escalarmul_min_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/escalarmul_min_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "escalarmul_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/escalarmul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "escalarmul_test_min",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/escalarmul_test_min.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "escalarmulany_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/escalarmulany_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "escalarmulfix_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/escalarmulfix_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "escalarmulw4table",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/escalarmulw4table.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "escalarmulw4table_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/escalarmulw4table_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "escalarmulw4table_test3",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/escalarmulw4table_test3.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "greatereqthan",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/greatereqthan.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "greaterthan",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/greaterthan.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "isequal",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/isequal.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "iszero",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/iszero.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "lesseqthan",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/lesseqthan.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "lessthan",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/lessthan.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mimc_sponge_hash_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/mimc_sponge_hash_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mimc_sponge_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/mimc_sponge_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mimc_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/mimc_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "montgomery2edwards",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/montgomery2edwards.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "montgomeryadd",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/montgomeryadd.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "montgomerydouble",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/montgomerydouble.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mux1_1",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/mux1_1.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mux2_1",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/mux2_1.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mux3_1",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/mux3_1.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mux4_1",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/mux4_1.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "pedersen2_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/pedersen2_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "pedersen_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/pedersen_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "pointbits_loopback",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/pointbits_loopback.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon3_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/poseidon3_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidon6_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/poseidon6_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "poseidonex_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/poseidonex_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "sha256_2_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/sha256_2_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "sha256_test448",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/sha256_test448.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "sha256_test512",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/sha256_test512.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "sign_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/sign_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "smtprocessor10_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/smtprocessor10_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "smtverifier10_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/smtverifier10_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "sum_test",
+    "path": "libs/zksolid-libs/circomlib/test/circuits/sum_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matAdd_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matAdd_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matElemMul_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matElemMul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matElemPow_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matElemPow_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matMul_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matMul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matPow_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matPow_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matScalarAdd_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matScalarAdd_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matScalarMul_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matScalarMul_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matScalarSub_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matScalarSub_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "matSub_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/matSub_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "outer_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/outer_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "trace_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/trace_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "tranpose_test",
+    "path": "libs/zksolid-libs/circomlib-matrix/test/circuits/tranpose_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "AveragePooling2D_stride_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/AveragePooling2D_stride_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "AveragePooling2D_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/AveragePooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "BatchNormalization_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/BatchNormalization_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Conv1D_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/Conv1D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Conv2D_stride_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/Conv2D_stride_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Conv2D_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/Conv2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Dense_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/Dense_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Flatten2D_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/Flatten2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "GlobalAveragePooling2D_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/GlobalAveragePooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "GlobalMaxPooling2D_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/GlobalMaxPooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "IsNegative_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/IsNegative_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "IsPositive_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/IsPositive_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "MaxPooling2D_stride_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/MaxPooling2D_stride_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "MaxPooling2D_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/MaxPooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "Max_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/Max_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "ReLU_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/ReLU_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "SumPooling2D_stride_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/SumPooling2D_stride_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "SumPooling2D_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/SumPooling2D_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "decryptMultiple_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/decryptMultiple_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "decrypt_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/decrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "ecdh_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/ecdh_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "encryptDecrypt_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/encryptDecrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "encryptMultiple_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/encryptMultiple_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "encrypt_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/encrypt_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "encrypted_mnist_latest_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/encrypted_mnist_latest_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mnist_convnet_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/mnist_convnet_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mnist_latest_precision_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/mnist_latest_precision_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mnist_latest_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/mnist_latest_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "mnist_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/mnist_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "model1_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/model1_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "publicKey_test",
+    "path": "libs/zksolid-libs/circomlib-ml/test/circuits/publicKey_test.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "zksolid-libs",
+    "path": "libs/zksolid-libs/telepathy/circuits/circuits/sha256/main.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "step",
+    "path": "libs/zksolid-libs/telepathy/circuits/circuits/step.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_aggregate_bls_add_4",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_aggregate_bls_add_4.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_aggregate_bls_add_512",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_aggregate_bls_add_512.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_aggregate_bls_verify_512",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_aggregate_bls_verify_512.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_assert_valid_signed_header",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_assert_valid_signed_header.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_expand_message_xmd",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_expand_message_xmd.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_hash_to_field",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_hash_to_field.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_i2osp_1",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_i2osp_1.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_i2osp_2",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_i2osp_2.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_poseidon_committment",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_poseidon_committment.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_pubkey_bytes_to_big_int",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_pubkey_bytes_to_big_int.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_sha_bytes_constraint_cost",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_sha_bytes_constraint_cost.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_ssz_array_4",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_ssz_array_4.circom",
+    "repository": "",
+    "commit": ""
+  },
+  {
+    "benchmark name": "test_template_assert_valid_signed_header",
+    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_template_assert_valid_signed_header.circom",
+    "repository": "",
+    "commit": ""
+  }
+]

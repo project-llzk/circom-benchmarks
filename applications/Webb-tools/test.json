@@ -1,0 +1,104 @@
+{
+    "id": "Webb-tools",
+	"source": "Webb-tools",
+	"project_url": "https://github.com/webb-tools/protocol-solidity",
+	"commit": "",
+    "synthetic": false,
+	"link_libraries": false,
+	"setup": [
+		"npm install"
+	],
+	"tests": [
+		{
+			"id": "BatchTreeUpdate_4",
+			"file": "merkle-tree/batchMerkleTreeUpdate.circom",
+			"template": "BatchTreeUpdate",
+			"main": "test/batchMerkleTreeUpdate_4.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "BatchTreeUpdate_8",
+			"file": "merkle-tree/batchMerkleTreeUpdate.circom",
+			"template": "BatchTreeUpdate",
+			"main": "test/batchMerkleTreeUpdate_8.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "BatchTreeUpdate_16",
+			"file": "merkle-tree/batchMerkleTreeUpdate.circom",
+			"template": "BatchTreeUpdate",
+			"main": "test/batchMerkleTreeUpdate_16.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "BatchTreeUpdate_32",
+			"file": "merkle-tree/batchMerkleTreeUpdate.circom",
+			"template": "BatchTreeUpdate",
+			"main": "test/batchMerkleTreeUpdate_32.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "BatchTreeUpdate_64",
+			"file": "merkle-tree/batchMerkleTreeUpdate.circom",
+			"template": "BatchTreeUpdate",
+			"main": "test/batchMerkleTreeUpdate_64.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "Transaction_2_2",
+			"file": "vanchor/transaction.circom",
+			"template": "Transaction",
+			"main": "test/poseidon_vanchor_2_2.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "Transaction_2_8",
+			"file": "vanchor/transaction.circom",
+			"template": "Transaction",
+			"main": "test/poseidon_vanchor_2_8.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "Transaction_16_2",
+			"file": "vanchor/transaction.circom",
+			"template": "Transaction",
+			"main": "test/poseidon_vanchor_16_2.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "Transaction_16_8",
+			"file": "vanchor/transaction.circom",
+			"template": "Transaction",
+			"main": "test/poseidon_vanchor_16_8.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "TransactionForest_2_2",
+			"file": "vanchor/transactionForest.circom",
+			"template": "TransactionForest",
+			"main": "test/vanchor_forest_2_2.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "TransactionForest_2_8",
+			"file": "vanchor/transactionForest.circom",
+			"template": "TransactionForest",
+			"main": "test/vanchor_forest_2_8.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "TransactionForest_16_2",
+			"file": "vanchor/transactionForest.circom",
+			"template": "TransactionForest",
+			"main": "test/vanchor_forest_16_2.circom",
+			"description": "Webb-tools test"
+		},
+		{
+			"id": "TransactionForest_16_8",
+			"file": "vanchor/transactionForest.circom",
+			"template": "TransactionForest",
+			"main": "test/vanchor_forest_16_8.circom",
+			"description": "Webb-tools test"
+		}
+	]
+}

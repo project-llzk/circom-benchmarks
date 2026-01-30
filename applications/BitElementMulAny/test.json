@@ -1,0 +1,15 @@
+{
+    "id": "BitElementMulAny",
+	"source": "ZKSolid",
+	"commit": "",
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "BitElementMulAny",
+			"file": "src/escalarmulany.circom",
+			"template": "BitElementMulAny",
+			"main": "src/main.circom",
+			"description": "Output signals `dblOut` and `addOut` are underconstrained."
+		}
+	]
+}

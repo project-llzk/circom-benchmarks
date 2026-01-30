@@ -1,0 +1,36 @@
+{
+    "id": "zk-SQL",
+	"source": "ZKSolid",
+    "synthetic": false,
+	"tests": [
+        {
+          "id": "delete",
+          "file": "src/delete.circom",
+          "template": "delete.circom",
+          "main": "src/delete.circom",
+          "description": ""
+        },
+        {
+          "id": "insert",
+          "file": "src/insert.circom",
+          "template": "insert.circom",
+          "main": "src/insert.circom",
+          "description": ""
+        },
+        {
+          "id": "select",
+          "file": "src/select.circom",
+          "template": "select.circom",
+          "main": "src/select.circom",
+          "description": ""
+        },
+        {
+          "id": "update",
+          "file": "src/update.circom",
+          "template": "update.circom",
+          "main": "src/update.circom",
+          "description": ""
+        }
+      ]
+      
+}

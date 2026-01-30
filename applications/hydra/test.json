@@ -1,0 +1,29 @@
+{
+    "id": "hydra",
+	"source": "ZKSolid",
+    "synthetic": false,
+	"tests": [
+        {
+          "id": "hydra-s1",
+          "file": "src/hydra-s1.circom",
+          "template": "hydra-s1.circom",
+          "main": "src/hydra-s1.circom",
+          "description": ""
+        },
+        {
+          "id": "verify-hydra-commitment",
+          "file": "src/verify-hydra-commitment.circom",
+          "template": "verify-hydra-commitment.circom",
+          "main": "src/verify-hydra-commitment.circom",
+          "description": ""
+        },
+        {
+          "id": "verify-merkle-path",
+          "file": "src/verify-merkle-path.circom",
+          "template": "verify-merkle-path.circom",
+          "main": "src/verify-merkle-path.circom",
+          "description": ""
+        }
+      ]
+      
+}

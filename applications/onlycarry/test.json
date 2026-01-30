@@ -1,0 +1,15 @@
+{
+    "id": "onlycarry",
+	"project_url": "https://github.com/Electron-Labs/ed25519-circom/",
+	"commit": "",
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "onlycarry",
+			"file": "src/binadd.circom",
+			"template": "onlycarry",
+			"main": "src/main.circom",
+			"description": "Output signals `val` and `carry_out` are not constrained."
+		}
+	]
+}

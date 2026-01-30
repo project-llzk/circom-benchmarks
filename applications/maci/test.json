@@ -1,0 +1,247 @@
+{
+    "id": "maci",
+	"source": "ZKSolid",
+    "internal": true,
+    "synthetic": false,
+	"tests": [
+        {
+          "id": "batchUpdateStateTree_32",
+          "file": "src/batchUpdateStateTree_32.circom",
+          "template": "batchUpdateStateTree_32.circom",
+          "main": "src/batchUpdateStateTree_32.circom",
+          "description": ""
+        },
+        {
+          "id": "batchUpdateStateTree_32_batch16",
+          "file": "src/batchUpdateStateTree_32_batch16.circom",
+          "template": "batchUpdateStateTree_32_batch16.circom",
+          "main": "src/batchUpdateStateTree_32_batch16.circom",
+          "description": ""
+        },
+        {
+          "id": "batchUpdateStateTree_32_batch256",
+          "file": "src/batchUpdateStateTree_32_batch256.circom",
+          "template": "batchUpdateStateTree_32_batch256.circom",
+          "main": "src/batchUpdateStateTree_32_batch256.circom",
+          "description": ""
+        },
+        {
+          "id": "batchUpdateStateTree_large",
+          "file": "src/batchUpdateStateTree_large.circom",
+          "template": "batchUpdateStateTree_large.circom",
+          "main": "src/batchUpdateStateTree_large.circom",
+          "description": ""
+        },
+        {
+          "id": "batchUpdateStateTree_medium",
+          "file": "src/batchUpdateStateTree_medium.circom",
+          "template": "batchUpdateStateTree_medium.circom",
+          "main": "src/batchUpdateStateTree_medium.circom",
+          "description": ""
+        },
+        {
+          "id": "batchUpdateStateTree_small",
+          "file": "src/batchUpdateStateTree_small.circom",
+          "template": "batchUpdateStateTree_small.circom",
+          "main": "src/batchUpdateStateTree_small.circom",
+          "description": ""
+        },
+        {
+          "id": "batchUpdateStateTree_test",
+          "file": "src/batchUpdateStateTree_test.circom",
+          "template": "batchUpdateStateTree_test.circom",
+          "main": "src/batchUpdateStateTree_test.circom",
+          "description": ""
+        },
+        {
+          "id": "calculateTotal_test",
+          "file": "src/calculateTotal_test.circom",
+          "template": "calculateTotal_test.circom",
+          "main": "src/calculateTotal_test.circom",
+          "description": ""
+        },
+        {
+          "id": "decrypt_test",
+          "file": "src/decrypt_test.circom",
+          "template": "decrypt_test.circom",
+          "main": "src/decrypt_test.circom",
+          "description": ""
+        },
+        {
+          "id": "ecdh_test",
+          "file": "src/ecdh_test.circom",
+          "template": "ecdh_test.circom",
+          "main": "src/ecdh_test.circom",
+          "description": ""
+        },
+        {
+          "id": "hasher11_test",
+          "file": "src/hasher11_test.circom",
+          "template": "hasher11_test.circom",
+          "main": "src/hasher11_test.circom",
+          "description": ""
+        },
+        {
+          "id": "hasher5_test",
+          "file": "src/hasher5_test.circom",
+          "template": "hasher5_test.circom",
+          "main": "src/hasher5_test.circom",
+          "description": ""
+        },
+        {
+          "id": "hashleftright_test",
+          "file": "src/hashleftright_test.circom",
+          "template": "hashleftright_test.circom",
+          "main": "src/hashleftright_test.circom",
+          "description": ""
+        },
+        {
+          "id": "merkleTreeCheckRoot_test",
+          "file": "src/merkleTreeCheckRoot_test.circom",
+          "template": "merkleTreeCheckRoot_test.circom",
+          "main": "src/merkleTreeCheckRoot_test.circom",
+          "description": ""
+        },
+        {
+          "id": "merkleTreeInclusionProof_test",
+          "file": "src/merkleTreeInclusionProof_test.circom",
+          "template": "merkleTreeInclusionProof_test.circom",
+          "main": "src/merkleTreeInclusionProof_test.circom",
+          "description": ""
+        },
+        {
+          "id": "merkleTreeLeafExists_test",
+          "file": "src/merkleTreeLeafExists_test.circom",
+          "template": "merkleTreeLeafExists_test.circom",
+          "main": "src/merkleTreeLeafExists_test.circom",
+          "description": ""
+        },
+        {
+          "id": "performChecksBeforeUpdate_test",
+          "file": "src/performChecksBeforeUpdate_test.circom",
+          "template": "performChecksBeforeUpdate_test.circom",
+          "main": "src/performChecksBeforeUpdate_test.circom",
+          "description": ""
+        },
+        {
+          "id": "publicKey_test",
+          "file": "src/publicKey_test.circom",
+          "template": "publicKey_test.circom",
+          "main": "src/publicKey_test.circom",
+          "description": ""
+        },
+        {
+          "id": "quadVoteTally_32",
+          "file": "src/quadVoteTally_32.circom",
+          "template": "quadVoteTally_32.circom",
+          "main": "src/quadVoteTally_32.circom",
+          "description": ""
+        },
+        {
+          "id": "quadVoteTally_32_batch16",
+          "file": "src/quadVoteTally_32_batch16.circom",
+          "template": "quadVoteTally_32_batch16.circom",
+          "main": "src/quadVoteTally_32_batch16.circom",
+          "description": ""
+        },
+        {
+          "id": "quadVoteTally_32_batch256",
+          "file": "src/quadVoteTally_32_batch256.circom",
+          "template": "quadVoteTally_32_batch256.circom",
+          "main": "src/quadVoteTally_32_batch256.circom",
+          "description": ""
+        },
+        {
+          "id": "quadVoteTally_large",
+          "file": "src/quadVoteTally_large.circom",
+          "template": "quadVoteTally_large.circom",
+          "main": "src/quadVoteTally_large.circom",
+          "description": ""
+        },
+        {
+          "id": "quadVoteTally_medium",
+          "file": "src/quadVoteTally_medium.circom",
+          "template": "quadVoteTally_medium.circom",
+          "main": "src/quadVoteTally_medium.circom",
+          "description": ""
+        },
+        {
+          "id": "quadVoteTally_small",
+          "file": "src/quadVoteTally_small.circom",
+          "template": "quadVoteTally_small.circom",
+          "main": "src/quadVoteTally_small.circom",
+          "description": ""
+        },
+        {
+          "id": "quadVoteTally_test",
+          "file": "src/quadVoteTally_test.circom",
+          "template": "quadVoteTally_test.circom",
+          "main": "src/quadVoteTally_test.circom",
+          "description": ""
+        },
+        {
+          "id": "quinGeneratePathIndices_test",
+          "file": "src/quinGeneratePathIndices_test.circom",
+          "template": "quinGeneratePathIndices_test.circom",
+          "main": "src/quinGeneratePathIndices_test.circom",
+          "description": ""
+        },
+        {
+          "id": "quinSelector_test",
+          "file": "src/quinSelector_test.circom",
+          "template": "quinSelector_test.circom",
+          "main": "src/quinSelector_test.circom",
+          "description": ""
+        },
+        {
+          "id": "quinTreeCheckRoot_test",
+          "file": "src/quinTreeCheckRoot_test.circom",
+          "template": "quinTreeCheckRoot_test.circom",
+          "main": "src/quinTreeCheckRoot_test.circom",
+          "description": ""
+        },
+        {
+          "id": "quinTreeInclusionProof_test",
+          "file": "src/quinTreeInclusionProof_test.circom",
+          "template": "quinTreeInclusionProof_test.circom",
+          "main": "src/quinTreeInclusionProof_test.circom",
+          "description": ""
+        },
+        {
+          "id": "quinTreeLeafExists_test",
+          "file": "src/quinTreeLeafExists_test.circom",
+          "template": "quinTreeLeafExists_test.circom",
+          "main": "src/quinTreeLeafExists_test.circom",
+          "description": ""
+        },
+        {
+          "id": "resultCommitmentVerifier_test",
+          "file": "src/resultCommitmentVerifier_test.circom",
+          "template": "resultCommitmentVerifier_test.circom",
+          "main": "src/resultCommitmentVerifier_test.circom",
+          "description": ""
+        },
+        {
+          "id": "splicer_test",
+          "file": "src/splicer_test.circom",
+          "template": "splicer_test.circom",
+          "main": "src/splicer_test.circom",
+          "description": ""
+        },
+        {
+          "id": "updateStateTree_test",
+          "file": "src/updateStateTree_test.circom",
+          "template": "updateStateTree_test.circom",
+          "main": "src/updateStateTree_test.circom",
+          "description": ""
+        },
+        {
+          "id": "verifySignature_test",
+          "file": "src/verifySignature_test.circom",
+          "template": "verifySignature_test.circom",
+          "main": "src/verifySignature_test.circom",
+          "description": ""
+        }
+      ]
+      
+}

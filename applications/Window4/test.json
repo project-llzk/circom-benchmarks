@@ -1,0 +1,15 @@
+{
+    "id": "Window4",
+	"source": "ZKSolid",
+	"commit": "",
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "Window4",
+			"file": "src/pedersen.circom",
+			"template": "Window4",
+			"main": "src/main.circom",
+			"description": "Output signals `out` and `out8` are underconstrained."
+		}
+	]
+}

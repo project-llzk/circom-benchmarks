@@ -1,0 +1,15 @@
+{
+    "id": "BinSum",
+	"source": "ZKSolid",
+	"commit": "",
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "BinSum",
+			"file": "src/binsum.circom",
+			"template": "BinSum",
+			"main": "src/main.circom",
+			"description": "Output signal `out` is underconstrained."
+		}
+	]
+}

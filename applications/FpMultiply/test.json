@@ -1,0 +1,15 @@
+{
+    "id": "FpMultiply",
+	"source": "ZKSolid",
+	"commit": "",
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "FpMultiply",
+			"file": "src/fp.circom",
+			"template": "FpMultiply",
+			"main": "src/main.circom",
+			"description": "Uses SignedFpCarryModP template which has underconstrained outputs."
+		}
+	]
+}

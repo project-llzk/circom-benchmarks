@@ -1,0 +1,65 @@
+{
+    "id": "aes-circom",
+	"source": "ZKSolid",
+    "synthetic": false,
+	"tests": [
+        {
+          "id": "aes_256_ctr_test",
+          "file": "src/aes_256_ctr_test.circom",
+          "template": "aes_256_ctr_test.circom",
+          "main": "src/aes_256_ctr_test.circom",
+          "description": ""
+        },
+        {
+          "id": "aes_256_encrypt_test",
+          "file": "src/aes_256_encrypt_test.circom",
+          "template": "aes_256_encrypt_test.circom",
+          "main": "src/aes_256_encrypt_test.circom",
+          "description": ""
+        },
+        {
+          "id": "aes_256_key_expansion_test",
+          "file": "src/aes_256_key_expansion_test.circom",
+          "template": "aes_256_key_expansion_test.circom",
+          "main": "src/aes_256_key_expansion_test.circom",
+          "description": ""
+        },
+        {
+          "id": "gcm_siv_dec_2_keys_test",
+          "file": "src/gcm_siv_dec_2_keys_test.circom",
+          "template": "gcm_siv_dec_2_keys_test.circom",
+          "main": "src/gcm_siv_dec_2_keys_test.circom",
+          "description": ""
+        },
+        {
+          "id": "gcm_siv_enc_2_keys_test",
+          "file": "src/gcm_siv_enc_2_keys_test.circom",
+          "template": "gcm_siv_enc_2_keys_test.circom",
+          "main": "src/gcm_siv_enc_2_keys_test.circom",
+          "description": ""
+        },
+        {
+          "id": "gfmul_int_test",
+          "file": "src/gfmul_int_test.circom",
+          "template": "gfmul_int_test.circom",
+          "main": "src/gfmul_int_test.circom",
+          "description": ""
+        },
+        {
+          "id": "mul_test",
+          "file": "src/mul_test.circom",
+          "template": "mul_test.circom",
+          "main": "src/mul_test.circom",
+          "description": ""
+        },
+        {
+          "id": "polyval_test",
+          "file": "src/polyval_test.circom",
+          "template": "polyval_test.circom",
+          "main": "src/polyval_test.circom",
+          "description": ""
+        }
+      ]
+      
+      
+}

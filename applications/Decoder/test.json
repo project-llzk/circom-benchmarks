@@ -1,0 +1,15 @@
+{
+    "id": "Decoder",
+	"source": "ZKSolid",
+	"commit": "",
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "Decoder",
+			"file": "src/multiplexer.circom",
+			"template": "Decoder",
+			"main": "src/main.circom",
+			"description": "Output signals `out` and `success` are underconstrained."
+		}
+	]
+}

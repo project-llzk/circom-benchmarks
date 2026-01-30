@@ -1,0 +1,15 @@
+{
+    "id": "Num2BitsCheck",
+	"commit": "",
+    "internal": false,
+    "synthetic": false,
+	"tests": [
+		{
+			"id": "Num2BitsCheck",
+			"file": "src/Num2BitsCheck.circom",
+			"template": "Num2BitsCheck",
+			"main": "src/main.circom",
+			"description": "Output signal `out` is not constrained."
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+    "id": "semaphore",
+	"source": "ZKSolid",
+	"commit": "4a607996fe54a18b76196caa11a1f271e51a554b",
+    "internal": true,
+    "synthetic": false,
+	"tests": [
+        {
+          "id": "semaphore",
+          "file": "src/semaphore.circom",
+          "template": "semaphore.circom",
+          "main": "src/semaphore.circom",
+          "description": ""
+        }
+      ]
+      
+}
