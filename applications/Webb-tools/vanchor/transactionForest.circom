@@ -1,6 +1,6 @@
 pragma circom 2.0.0;
 
-include "../../../../libs/circomlib/circuits/poseidon.circom";
+include "../../../libs/circomlib/circuits/poseidon.circom";
 include "../set/membership.circom";
 include "../merkle-tree/merkleForest.circom";
 include "./keypair.circom";
