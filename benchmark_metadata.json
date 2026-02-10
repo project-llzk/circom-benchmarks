@@ -1272,20 +1272,8 @@
     "commit": ""
   },
   {
-    "benchmark name": "test_fp12_multiply2_32",
-    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_multiply2_32.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
     "benchmark name": "test_fp12_multiply_32",
     "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_multiply_32.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_fp12_pow4_32",
-    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_fp12_pow4_32.circom",
     "repository": "",
     "commit": ""
   },
@@ -1316,12 +1304,6 @@
   {
     "benchmark name": "test_linefunc_unequal_32",
     "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_linefunc_unequal_32.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_multiply_linefunc_equal_32",
-    "path": "libs/zksolid-libs/circom-pairing/test/circuits/test_multiply_linefunc_equal_32.circom",
     "repository": "",
     "commit": ""
   },
@@ -1895,82 +1877,4 @@
     "repository": "",
     "commit": ""
   },
-  {
-    "benchmark name": "test_aggregate_bls_add_4",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_aggregate_bls_add_4.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_aggregate_bls_add_512",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_aggregate_bls_add_512.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_aggregate_bls_verify_512",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_aggregate_bls_verify_512.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_assert_valid_signed_header",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_assert_valid_signed_header.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_expand_message_xmd",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_expand_message_xmd.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_hash_to_field",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_hash_to_field.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_i2osp_1",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_i2osp_1.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_i2osp_2",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_i2osp_2.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_poseidon_committment",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_poseidon_committment.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_pubkey_bytes_to_big_int",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_pubkey_bytes_to_big_int.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_sha_bytes_constraint_cost",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_sha_bytes_constraint_cost.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_ssz_array_4",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_ssz_array_4.circom",
-    "repository": "",
-    "commit": ""
-  },
-  {
-    "benchmark name": "test_template_assert_valid_signed_header",
-    "path": "libs/zksolid-libs/telepathy/circuits/test/circuits/test_template_assert_valid_signed_header.circom",
-    "repository": "",
-    "commit": ""
-  }
 ]
