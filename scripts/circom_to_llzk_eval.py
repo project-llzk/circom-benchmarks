@@ -43,6 +43,9 @@ def get_circom_entrypoints(benchmark_dir: str, exclude_dirs: List[str] = None) -
                 continue
     return sorted(circom_entrypoints)
 
+def _run_task_unpack(packed: Tuple) -> Tuple[str, str, str, str]:
+    return run_task(*packed)
+
 def run_task(benchmark_name: str, args: List[str], timeout: int) -> Tuple[str, str, str, str]:
     start = time.perf_counter()
     try:
@@ -86,9 +89,16 @@ def run_circom_benchmarks(benchmarks: List[str], benchmark_dir: str, timeout: in
             results.append(run_task(benchmark_name, args, timeout))
             print(f"Exit condition: {results[-1][1]}")
     else:
-        print(f"Launching {len(benchmark_args)} benchmarking tasks.")
+        total = len(benchmark_args)
+        print(f"Launching {total} benchmarking tasks.")
+        next_milestone = 10
         with multiprocessing.Pool(nthreads) as p:
-            results = p.starmap(run_task, benchmark_args)
+            for i, result in enumerate(p.imap_unordered(_run_task_unpack, benchmark_args), start=1):
+                results.append(result)
+                pct = i * 100 // total
+                if pct >= next_milestone:
+                    print(f"Progress: {i}/{total} ({pct}%) complete")
+                    next_milestone += 10
 
     results.sort()
     for _, cause, _, _ in results:
