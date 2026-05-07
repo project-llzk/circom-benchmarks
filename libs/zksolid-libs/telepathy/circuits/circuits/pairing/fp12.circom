@@ -81,7 +81,6 @@ template Fp12Add(n, k, p) {
             for (var m = 0; m < k; m ++) {
                 adders[i][j].a[m] <== a[i][j][m];
                 adders[i][j].b[m] <== b[i][j][m];
-                adders[i][j].p[m] <== p[m];
             }
             for (var m = 0; m < k; m ++) {
                 out[i][j][m] <== adders[i][j].out[m];
@@ -475,7 +474,6 @@ template Fp12Exp(n, k, e, p) {
         // compute pow2[i] = pow2[i-1]**2
         if( i > 0 ){ // pow2[0] is never defined since there is no squaring involved
             pow2[i] = Fp12Square(n, k, p);
-            for(var j=0; j<k; j++) pow2[i].p[j] <== p[j];
             if( i == 1 ){
                 for(var id=0; id<6; id++)for(var eps=0; eps<2; eps++)for(var j=0; j<k; j++)
                     pow2[i].in[id][eps][j] <== in[id][eps][j];
