@@ -43,7 +43,7 @@ template Step() {
     var N = 55;
     var K = 7;
     var SYNC_COMMITTEE_SIZE = 4;
-    var LOG_2_SYNC_COMMITTEE_SIZE = 9;
+    var LOG_2_SYNC_COMMITTEE_SIZE = 2;
     var FINALIZED_HEADER_DEPTH = 6;
     var FINALIZED_HEADER_INDEX = 105;
     var EXECUTION_STATE_ROOT_DEPTH = 8;
