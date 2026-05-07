@@ -75,7 +75,7 @@ def run_circom_benchmarks(benchmarks: List[str], benchmark_dir: str, timeout: in
     benchmark_args = []
     for benchmark in benchmarks:
         benchmark_name = os.path.relpath(benchmark, benchmark_dir)
-        args = [circom_bin, f"--llzk={llzk_opt}", "-l", os.path.join(benchmark_dir, "tests/libs/"), "-o", "llzk-outputs/", benchmark]
+        args = [circom_bin, "--llzk_plaintext", f"--llzk={llzk_opt}", "-l", os.path.join(benchmark_dir, "tests/libs/"), "-o", "llzk-outputs/", benchmark]
         benchmark_args.append((benchmark_name, args, timeout))
 
     if nthreads == 1:
