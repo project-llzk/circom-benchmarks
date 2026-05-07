@@ -20,14 +20,15 @@ import subprocess
 import time
 from typing import List, Tuple
 
-
 # Allow optional public inputs block before '='
 MAIN_COMPONENT_RE = re.compile(r"^\s*component\s+main\b.*=", re.ASCII)
 
-def get_circom_entrypoints(benchmark_dir: str) -> List[str]:
+def get_circom_entrypoints(benchmark_dir: str, exclude_dirs: List[str] = None) -> List[str]:
     """Return sorted circom entrypoints that define `component main` under a benchmark dir."""
+    exclude_abs = set(os.path.abspath(d) for d in (exclude_dirs or []))
     circom_entrypoints = []
-    for root, _, files in os.walk(benchmark_dir):
+    for root, dirs, files in os.walk(benchmark_dir):
+        dirs[:] = [d for d in dirs if os.path.abspath(os.path.join(root, d)) not in exclude_abs]
         for filename in files:
             if not filename.endswith(".circom"):
                 continue
@@ -41,6 +42,9 @@ def get_circom_entrypoints(benchmark_dir: str) -> List[str]:
             except OSError:
                 continue
     return sorted(circom_entrypoints)
+
+def _run_task_unpack(packed: Tuple) -> Tuple[str, str, str, str]:
+    return run_task(*packed)
 
 def run_task(benchmark_name: str, args: List[str], timeout: int) -> Tuple[str, str, str, str]:
     start = time.perf_counter()
@@ -65,7 +69,6 @@ def run_task(benchmark_name: str, args: List[str], timeout: int) -> Tuple[str, s
 
 def run_circom_benchmarks(benchmarks: List[str], benchmark_dir: str, timeout: int, concrete: bool, circom_bin: str, nthreads: int):
     """Run circom->llzk on benchmarks and save timing/error results to a CSV."""
-    os.makedirs("llzk-outputs", exist_ok=True)
     results = []
     success_cnt = 0
     error_cnt = 0
@@ -75,7 +78,9 @@ def run_circom_benchmarks(benchmarks: List[str], benchmark_dir: str, timeout: in
     benchmark_args = []
     for benchmark in benchmarks:
         benchmark_name = os.path.relpath(benchmark, benchmark_dir)
-        args = [circom_bin, "--llzk_plaintext", f"--llzk={llzk_opt}", "-l", os.path.join(benchmark_dir, "tests/libs/"), "-o", "llzk-outputs/", benchmark]
+        bench_out_dir = os.path.join("llzk-outputs", benchmark_name.replace(os.sep, "_").removesuffix(".circom"))
+        os.makedirs(bench_out_dir, exist_ok=True)
+        args = [circom_bin, "--llzk_plaintext", f"--llzk={llzk_opt}", "-l", os.path.join(benchmark_dir, "tests/libs/"), "-o", bench_out_dir, benchmark]
         benchmark_args.append((benchmark_name, args, timeout))
 
     if nthreads == 1:
@@ -84,9 +89,16 @@ def run_circom_benchmarks(benchmarks: List[str], benchmark_dir: str, timeout: in
             results.append(run_task(benchmark_name, args, timeout))
             print(f"Exit condition: {results[-1][1]}")
     else:
-        print(f"Launching {len(benchmark_args)} benchmarking tasks.")
+        total = len(benchmark_args)
+        print(f"Launching {total} benchmarking tasks.")
+        next_milestone = 10
         with multiprocessing.Pool(nthreads) as p:
-            results = p.starmap(run_task, benchmark_args)
+            for i, result in enumerate(p.imap_unordered(_run_task_unpack, benchmark_args), start=1):
+                results.append(result)
+                pct = i * 100 // total
+                if pct >= next_milestone:
+                    print(f"Progress: {i}/{total} ({pct}%) complete")
+                    next_milestone += 10
 
     results.sort()
     for _, cause, _, _ in results:
@@ -115,7 +127,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     start = time.time()
     print(f"{args.benchmark_dir = }")
-    files = get_circom_entrypoints(args.benchmark_dir)
+    files = get_circom_entrypoints(args.benchmark_dir, exclude_dirs=["llzk-outputs"])
     run_circom_benchmarks(
         files,
         args.benchmark_dir,
