@@ -59,9 +59,9 @@ def run_task(benchmark_name: str, args: List[str], timeout: int) -> Tuple[str, s
         if proc.returncode == 0:
             return (benchmark_name, "success", f"{elapsed:.6f}", "")
         else:
-            # currently taking only the first 200 characters or so from stderr
+            # currently taking only the first 400 characters from stderr
             # because the full dump can be a lot in some cases
-            error_message = proc.stderr.strip()[:200]
+            error_message = proc.stderr.strip()[:400]
             return (benchmark_name, "error", f"{elapsed:.6f}", error_message)
     except subprocess.TimeoutExpired:
         elapsed = time.perf_counter() - start
