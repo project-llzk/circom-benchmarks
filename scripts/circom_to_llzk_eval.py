@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Program: circom_to_llzk_eval.py
 # Description: This script runs the circom -> llzk frontend
 #   on circom-benchmarks and writes a CSV with timing results.
@@ -6,9 +8,16 @@
 #   - python3: For running this script
 #   - circom: For compiling the benchmarks
 #
-# Usage: python3 scripts/circom_to_llzk_eval.py [--benchmark_dir PATH] [--timeout SECONDS] [--circom-bin PATH] [--no-concrete/--concrete]
+# Usage:
+#   scripts/circom_to_llzk_eval.py \
+#       [--circom-bin PATH] \
+#       [--benchmark_dir PATH] \
+#       [--timeout SECONDS] \
+#       [--nthreads N] \
+#       [--no-concrete/--concrete]
 #
-# Example: python3 scripts/circom_to_llzk_eval.py --timeout 2 --circom-bin ~/veridise/circom/target/bin/circom --no-concrete
+# Example:
+#   scripts/circom_to_llzk_eval.py --timeout 2 --circom-bin ~/gh/circom/target/release/circom --no-concrete
 
 import argparse
 import csv
