@@ -160,7 +160,7 @@ def main(argv=None) -> int:
     )
     parser.add_argument("--benchmark_dir", "--benchmark-dir", default=str(DEFAULT_ROOT),
                         help="Local directory containing benchmark sources.")
-    parser.add_argument("--metadata-file", help="Metadata output path, relative to the current directory; defaults to <benchmark_dir>/benchmark_metadata.json.")
+    parser.add_argument("--metadata-file", help="Metadata output path, relative to the current directory; defaults to this repository's metadata/self.json for its own sources, or metadata/<source-directory-name>.json for external sources.")
     parser.add_argument("--scan-dir", action="append", help="Source-root-relative directory or .circom file to scan; repeat for multiple scopes. Defaults to the whole source root.")
     parser.add_argument("--exclude", action="append", default=[], help="Exclude root-relative fnmatch patterns; '*' also matches '/'. Matching directories exclude descendants. Repeat as needed.")
     args = parser.parse_args(argv)

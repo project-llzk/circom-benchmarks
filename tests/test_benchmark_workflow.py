@@ -1,6 +1,8 @@
 """Regression tests for metadata-driven benchmarks in external directories."""
 
+import contextlib
 import csv
+import io
 import json
 import os
 from pathlib import Path
@@ -10,11 +12,17 @@ import sys
 import tempfile
 import textwrap
 import unittest
+from unittest import mock
 
 
 REPOSITORY = Path(__file__).resolve().parents[1]
 DETECTOR = REPOSITORY / "scripts" / "benchmark_detector.py"
 EVALUATOR = REPOSITORY / "scripts" / "circom_to_llzk_eval.py"
+
+with mock.patch.object(sys, "path", [str(REPOSITORY / "scripts"), *sys.path]):
+    import benchmark_common
+    import benchmark_detector
+    import circom_to_llzk_eval
 
 
 class ExternalBenchmarkWorkflowTests(unittest.TestCase):
@@ -193,10 +201,61 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
             ["chosen/a.circom", "other/c.circom"],
         )
 
-    def test_detector_default_metadata_and_invalid_metadata_not_overwritten(self):
+    def test_default_metadata_is_shared_outside_the_source_and_caller_directories(self):
         self.circuit("main.circom")
-        self.run_script(DETECTOR, "--benchmark-dir", self.root)
-        self.assertTrue((self.root / "benchmark_metadata.json").is_file())
+        tool_root = self.workspace / "benchmark tools"
+        tool_root.mkdir()
+        expected_metadata = tool_root / "metadata" / f"{self.root.name}.json"
+        original_directory = Path.cwd()
+        try:
+            os.chdir(self.caller)
+            with mock.patch.object(benchmark_common, "DEFAULT_ROOT", tool_root), contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(benchmark_detector.main(["--benchmark-dir", str(self.root)]), 0)
+                self.assertTrue(expected_metadata.is_file())
+                self.assertEqual(circom_to_llzk_eval.main([
+                    "--benchmark-dir", str(self.root),
+                    "--output-dir", "results",
+                    "--circom-bin", str(self.compiler),
+                    "--nthreads", "1",
+                ]), 0)
+        finally:
+            os.chdir(original_directory)
+
+        self.assertEqual([row["Benchmark"] for row in self.read_results()], ["main.circom"])
+        info = json.loads((self.output / "concrete" / "run_info.json").read_text())
+        self.assertEqual(info["metadata_file"], str(expected_metadata))
+        self.assertFalse((self.root / "benchmark_metadata.json").exists())
+        self.assertFalse((self.root / "metadata").exists())
+        self.assertFalse((self.caller / "metadata").exists())
+
+    def test_metadata_defaults_for_self_external_sources_and_explicit_override(self):
+        tool_root = self.workspace / "benchmark tools"
+        tool_root.mkdir()
+        original_directory = Path.cwd()
+        try:
+            os.chdir(self.caller)
+            with mock.patch.object(benchmark_common, "DEFAULT_ROOT", tool_root):
+                self.assertEqual(
+                    benchmark_common.resolve_metadata_path(tool_root),
+                    tool_root / "metadata" / "self.json",
+                )
+                self.assertEqual(
+                    benchmark_common.resolve_metadata_path(self.root),
+                    tool_root / "metadata" / f"{self.root.name}.json",
+                )
+                self.assertEqual(
+                    benchmark_common.resolve_metadata_path(self.root, "metadata/custom.json"),
+                    self.caller / "metadata" / "custom.json",
+                )
+                self.assertEqual(
+                    benchmark_common.resolve_metadata_path(self.root, self.metadata),
+                    self.metadata,
+                )
+        finally:
+            os.chdir(original_directory)
+
+    def test_invalid_metadata_is_not_overwritten(self):
+        self.circuit("main.circom")
         self.metadata.parent.mkdir(parents=True, exist_ok=True)
         self.metadata.write_text("broken JSON")
         self.detect(expected=2)

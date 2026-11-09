@@ -8,7 +8,13 @@ The Circom fork that includes an LLZK backend is here:
 https://github.com/project-llzk/circom
 ```
 
-The list of benchmarks is recorded in `benchmark_metadata.json`. It is organized into two top-level categories:
+Benchmark lists are stored in this repository's `metadata/` directory:
+
+- `self.json`: this repository's benchmarks.
+- `costa_tests.json`: the external Costa test suite.
+- `circomlib.json`: the external Circomlib checkout.
+
+This repository's circuits are organized into two top-level categories:
 
 - `applications/`: Circom applications and end-to-end circuits.
 - `libs/`: Common and popular Circom libraries used by applications.
@@ -28,12 +34,16 @@ python3 scripts/benchmark_detector.py
 
 Both scripts accept `--benchmark_dir PATH` (also spelled `--benchmark-dir`) and
 default to this repository's root, regardless of the caller's working directory.
-Use `--metadata-file PATH` to keep metadata separately from the source checkout.
+Metadata defaults to this repository's `metadata/self.json` for its own sources,
+or `metadata/<source-directory-name>.json` for external sources. Use
+`--metadata-file PATH` to select another filename or location. The examples below
+use this override to name the `costa_circom_tests` checkout's manifest
+`metadata/costa_tests.json`.
 
 | Path | Resolution |
 | --- | --- |
 | `--benchmark_dir` | Relative to the caller's working directory; defaults to this repository |
-| `--metadata-file` | Relative to the caller's working directory; defaults to `<benchmark_dir>/benchmark_metadata.json` |
+| `--metadata-file` | Explicit paths are relative to the caller's working directory; defaults to this repository's `metadata/self.json` or `metadata/<source-directory-name>.json` |
 | Metadata entry `path` | Relative to `--benchmark_dir`, even when metadata is stored elsewhere |
 | Detector `--scan-dir` and `--exclude` | Relative to `--benchmark_dir` |
 | Evaluator `-l` / `--include-dir` | Relative to `--benchmark_dir`; absolute directories are also accepted |
@@ -99,24 +109,23 @@ For example, from this repository:
 
 ```bash
 python3 scripts/benchmark_detector.py \
-  --benchmark_dir ../circomlib \
-  --metadata-file metadata/circomlib.json
+  --benchmark_dir ../circomlib
 
 # Review enabled flags in metadata/circomlib.json before running.
 python3 scripts/circom_to_llzk_eval.py \
   --benchmark_dir ../circomlib \
-  --metadata-file metadata/circomlib.json \
   --output-dir benchmark_reports/circomlib \
   --circom-bin ../circom/target/debug/circom \
   --timeout 10 --nthreads 4
 
 python3 scripts/benchmark_detector.py \
   --benchmark_dir ../costa_circom_tests \
-  --metadata-file metadata/costa_circom_tests.json
+  --metadata-file metadata/costa_tests.json
 
+# Review enabled flags in metadata/costa_tests.json before running.
 python3 scripts/circom_to_llzk_eval.py \
   --benchmark_dir ../costa_circom_tests \
-  --metadata-file metadata/costa_circom_tests.json \
+  --metadata-file metadata/costa_tests.json \
   --output-dir benchmark_reports/costa_circom_tests \
   --circom-bin ../circom/target/debug/circom \
   --timeout 10 --nthreads 4

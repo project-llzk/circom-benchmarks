@@ -18,9 +18,11 @@ def resolve_root(value=DEFAULT_ROOT) -> Path:
 
 
 def resolve_metadata_path(root: Path, value=None) -> Path:
-    """Explicit metadata filenames are relative to the caller, not the source root."""
+    """Default to this repository's metadata directory; explicit paths use cwd."""
     if value is None:
-        return root / "benchmark_metadata.json"
+        root = Path(root).expanduser().resolve()
+        name = "self" if root == DEFAULT_ROOT else root.name
+        return DEFAULT_ROOT / "metadata" / f"{name}.json"
     return Path(value).expanduser().resolve()
 
 

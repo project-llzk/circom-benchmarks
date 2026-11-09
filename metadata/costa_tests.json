@@ -1,0 +1,1703 @@
+[
+  {
+    "benchmark name": "simple1",
+    "path": "bus_array_assignments/arrays_anonymous/simple1/simple1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "bus_array_assignments/arrays_anonymous/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple1",
+    "path": "bus_array_assignments/multidim_arrays/simple1/simple1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "bus_array_assignments/multidim_arrays/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple1",
+    "path": "bus_array_assignments/simple_arrays/simple1/simple1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "bus_array_assignments/simple_arrays/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "sha256",
+    "path": "circomlib_original_2.0/circuits/sha256/main.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "aliascheck_test",
+    "path": "circomlib_original_2.0/test/aliascheck_test/aliascheck_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "babyadd_tester",
+    "path": "circomlib_original_2.0/test/babyadd_tester/babyadd_tester.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "babycheck_test",
+    "path": "circomlib_original_2.0/test/babycheck_test/babycheck_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "babypbk_test",
+    "path": "circomlib_original_2.0/test/babypbk_test/babypbk_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "binsub_test",
+    "path": "circomlib_original_2.0/test/binsub_test/binsub_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "constants_test",
+    "path": "circomlib_original_2.0/test/constants_test/constants_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "eddsa_test",
+    "path": "circomlib_original_2.0/test/eddsa_test/eddsa_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "eddsamimc_test",
+    "path": "circomlib_original_2.0/test/eddsamimc_test/eddsamimc_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "eddsaposeidon_test",
+    "path": "circomlib_original_2.0/test/eddsaposeidon_test/eddsaposeidon_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "edwards2montgomery",
+    "path": "circomlib_original_2.0/test/edwards2montgomery/edwards2montgomery.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "escalarmul_min_test",
+    "path": "circomlib_original_2.0/test/escalarmul_min_test/escalarmul_min_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "escalarmul_test",
+    "path": "circomlib_original_2.0/test/escalarmul_test/escalarmul_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "escalarmul_test_min",
+    "path": "circomlib_original_2.0/test/escalarmul_test_min/escalarmul_test_min.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "escalarmulany_test",
+    "path": "circomlib_original_2.0/test/escalarmulany_test/escalarmulany_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "escalarmulfix_test",
+    "path": "circomlib_original_2.0/test/escalarmulfix_test/escalarmulfix_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "escalarmulw4table",
+    "path": "circomlib_original_2.0/test/escalarmulw4table/escalarmulw4table.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "escalarmulw4table_test",
+    "path": "circomlib_original_2.0/test/escalarmulw4table_test/escalarmulw4table_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "escalarmulw4table_test3",
+    "path": "circomlib_original_2.0/test/escalarmulw4table_test3/escalarmulw4table_test3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "greatereqthan",
+    "path": "circomlib_original_2.0/test/greatereqthan/greatereqthan.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "greaterthan",
+    "path": "circomlib_original_2.0/test/greaterthan/greaterthan.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "isequal",
+    "path": "circomlib_original_2.0/test/isequal/isequal.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "iszero",
+    "path": "circomlib_original_2.0/test/iszero/iszero.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "lesseqthan",
+    "path": "circomlib_original_2.0/test/lesseqthan/lesseqthan.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "lessthan",
+    "path": "circomlib_original_2.0/test/lessthan/lessthan.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "mimc_sponge_hash_test",
+    "path": "circomlib_original_2.0/test/mimc_sponge_hash_test/mimc_sponge_hash_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "mimc_sponge_test",
+    "path": "circomlib_original_2.0/test/mimc_sponge_test/mimc_sponge_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "mimc_test",
+    "path": "circomlib_original_2.0/test/mimc_test/mimc_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "montgomery2edwards",
+    "path": "circomlib_original_2.0/test/montgomery2edwards/montgomery2edwards.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "montgomeryadd",
+    "path": "circomlib_original_2.0/test/montgomeryadd/montgomeryadd.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "montgomerydouble",
+    "path": "circomlib_original_2.0/test/montgomerydouble/montgomerydouble.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "mux1_1",
+    "path": "circomlib_original_2.0/test/mux1_1/mux1_1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "mux2_1",
+    "path": "circomlib_original_2.0/test/mux2_1/mux2_1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "mux3_1",
+    "path": "circomlib_original_2.0/test/mux3_1/mux3_1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "mux4_1",
+    "path": "circomlib_original_2.0/test/mux4_1/mux4_1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "pedersen2_test",
+    "path": "circomlib_original_2.0/test/pedersen2_test/pedersen2_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "pedersen_test",
+    "path": "circomlib_original_2.0/test/pedersen_test/pedersen_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "pointbits_loopback",
+    "path": "circomlib_original_2.0/test/pointbits_loopback/pointbits_loopback.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "poseidon3_test",
+    "path": "circomlib_original_2.0/test/poseidon3_test/poseidon3_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "poseidon6_test",
+    "path": "circomlib_original_2.0/test/poseidon6_test/poseidon6_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "poseidonex_test",
+    "path": "circomlib_original_2.0/test/poseidonex_test/poseidonex_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "sha256_2_test",
+    "path": "circomlib_original_2.0/test/sha256_2_test/sha256_2_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "sha256_test448",
+    "path": "circomlib_original_2.0/test/sha256_test448/sha256_test448.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "sha256_test512",
+    "path": "circomlib_original_2.0/test/sha256_test512/sha256_test512.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "sign_test",
+    "path": "circomlib_original_2.0/test/sign_test/sign_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "smtprocessor10_test",
+    "path": "circomlib_original_2.0/test/smtprocessor10_test/smtprocessor10_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "smtverifier10_test",
+    "path": "circomlib_original_2.0/test/smtverifier10_test/smtverifier10_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "sum_test",
+    "path": "circomlib_original_2.0/test/sum_test/sum_test.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "known_last_assignment_1_mixed",
+    "path": "detecting_last_assignment/known_last/known_last_assignment_1_mixed/known_last_assignment_1_mixed.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "known_last_assignment_1_signal",
+    "path": "detecting_last_assignment/known_last/known_last_assignment_1_signal/known_last_assignment_1_signal.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "known_last_assignment_1_signal_comp",
+    "path": "detecting_last_assignment/known_last/known_last_assignment_1_signal_comp/known_last_assignment_1_signal_comp.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "known_last_assignment_1_var",
+    "path": "detecting_last_assignment/known_last/known_last_assignment_1_var/known_last_assignment_1_var.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "known_last_assignment_1_mixed_array",
+    "path": "detecting_last_assignment/known_last_array/known_last_assignment_1_mixed_array/known_last_assignment_1_mixed_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "known_last_assignment_1_signal_array",
+    "path": "detecting_last_assignment/known_last_array/known_last_assignment_1_signal_array/known_last_assignment_1_signal_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "known_last_assignment_1_signal_comp_array",
+    "path": "detecting_last_assignment/known_last_array/known_last_assignment_1_signal_comp_array/known_last_assignment_1_signal_comp_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "known_last_assignment_1_var_array",
+    "path": "detecting_last_assignment/known_last_array/known_last_assignment_1_var_array/known_last_assignment_1_var_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "if_known_last_assignment_1_mixed",
+    "path": "detecting_last_assignment/known_last_if/if_known_last_assignment_1_mixed/if_known_last_assignment_1_mixed.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "if_known_last_assignment_1_signal",
+    "path": "detecting_last_assignment/known_last_if/if_known_last_assignment_1_signal/if_known_last_assignment_1_signal.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "if_known_last_assignment_1_signal_comp",
+    "path": "detecting_last_assignment/known_last_if/if_known_last_assignment_1_signal_comp/if_known_last_assignment_1_signal_comp.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "if_known_last_assignment_1_var",
+    "path": "detecting_last_assignment/known_last_if/if_known_last_assignment_1_var/if_known_last_assignment_1_var.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "if_known_last_assignment_1_mixed_array",
+    "path": "detecting_last_assignment/known_last_if_array/if_known_last_assignment_1_mixed_array/if_known_last_assignment_1_mixed_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "if_known_last_assignment_1_signal_array",
+    "path": "detecting_last_assignment/known_last_if_array/if_known_last_assignment_1_signal_array/if_known_last_assignment_1_signal_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "if_known_last_assignment_1_signal_comp_array",
+    "path": "detecting_last_assignment/known_last_if_array/if_known_last_assignment_1_signal_comp_array/if_known_last_assignment_1_signal_comp_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "if_known_last_assignment_1_var_array",
+    "path": "detecting_last_assignment/known_last_if_array/if_known_last_assignment_1_var_array/if_known_last_assignment_1_var_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_mixed",
+    "path": "detecting_last_assignment/unknown_last_while/unknown_last_assignment_1_mixed/unknown_last_assignment_1_mixed.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_signal",
+    "path": "detecting_last_assignment/unknown_last_while/unknown_last_assignment_1_signal/unknown_last_assignment_1_signal.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_signal_comp",
+    "path": "detecting_last_assignment/unknown_last_while/unknown_last_assignment_1_signal_comp/unknown_last_assignment_1_signal_comp.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_var",
+    "path": "detecting_last_assignment/unknown_last_while/unknown_last_assignment_1_var/unknown_last_assignment_1_var.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_mixed_array",
+    "path": "detecting_last_assignment/unknown_last_while_array/unknown_last_assignment_1_mixed_array/unknown_last_assignment_1_mixed_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_signal_array",
+    "path": "detecting_last_assignment/unknown_last_while_array/unknown_last_assignment_1_signal_array/unknown_last_assignment_1_signal_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_signal_comp",
+    "path": "detecting_last_assignment/unknown_last_while_array/unknown_last_assignment_1_signal_comp_array/unknown_last_assignment_1_signal_comp.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_signal_comp_array",
+    "path": "detecting_last_assignment/unknown_last_while_array/unknown_last_assignment_1_signal_comp_array/unknown_last_assignment_1_signal_comp_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "unknown_last_assignment_1_var_array",
+    "path": "detecting_last_assignment/unknown_last_while_array/unknown_last_assignment_1_var_array/unknown_last_assignment_1_var_array.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ej_functions",
+    "path": "ej_functions_arrays/correct/ej_functions/ej_functions.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ej_functions_1",
+    "path": "ej_functions_arrays/correct/ej_functions_1/ej_functions_1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ej_functions_3",
+    "path": "ej_functions_arrays/correct/ej_functions_3/ej_functions_3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ej_functions_4",
+    "path": "ej_functions_arrays/correct/ej_functions_4/ej_functions_4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside2",
+    "path": "examples_multiple_eq/bus_inside_bus_multiple_sizes/bus_inside2/bus_inside2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside3",
+    "path": "examples_multiple_eq/bus_inside_bus_multiple_sizes/bus_inside3/bus_inside3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside4",
+    "path": "examples_multiple_eq/bus_inside_bus_multiple_sizes/bus_inside4/bus_inside4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "examples_multiple_eq/simples_arrays_multiple_sizes/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple3",
+    "path": "examples_multiple_eq/simples_arrays_multiple_sizes/simple3/simple3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4",
+    "path": "examples_multiple_eq/simples_arrays_multiple_sizes/simple4/simple4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "examples_multiple_eq/simples_multiple_sizes/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple3",
+    "path": "examples_multiple_eq/simples_multiple_sizes/simple3/simple3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4",
+    "path": "examples_multiple_eq/simples_multiple_sizes/simple4/simple4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_non_parallel",
+    "path": "examples_parallel_component/ex1/ex1_non_parallel/ex1_non_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_component",
+    "path": "examples_parallel_component/ex1/ex1_parallel_component/ex1_parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_template",
+    "path": "examples_parallel_component/ex1/ex1_parallel_template/ex1_parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_non_parallel",
+    "path": "examples_parallel_component/ex2/no_parallel/ex1_non_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "no_parallel",
+    "path": "examples_parallel_component/ex2/no_parallel/no_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_component",
+    "path": "examples_parallel_component/ex2/parallel_component/ex1_parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "parallel_component",
+    "path": "examples_parallel_component/ex2/parallel_component/parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_template",
+    "path": "examples_parallel_component/ex2/parallel_template/ex1_parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "parallel_template",
+    "path": "examples_parallel_component/ex2/parallel_template/parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_non_parallel",
+    "path": "examples_parallel_component/ex3/no_parallel/ex1_non_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "no_parallel",
+    "path": "examples_parallel_component/ex3/no_parallel/no_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_component",
+    "path": "examples_parallel_component/ex3/parallel_component/ex1_parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "parallel_component",
+    "path": "examples_parallel_component/ex3/parallel_component/parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_template",
+    "path": "examples_parallel_component/ex3/parallel_template/ex1_parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "parallel_template",
+    "path": "examples_parallel_component/ex3/parallel_template/parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_non_parallel",
+    "path": "examples_parallel_component/ex4/no_parallel/ex1_non_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "no_parallel",
+    "path": "examples_parallel_component/ex4/no_parallel/no_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_component",
+    "path": "examples_parallel_component/ex4/parallel_component/ex1_parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "parallel_component",
+    "path": "examples_parallel_component/ex4/parallel_component/parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_template",
+    "path": "examples_parallel_component/ex4/parallel_template/ex1_parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "parallel_template",
+    "path": "examples_parallel_component/ex4/parallel_template/parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_non_parallel",
+    "path": "examples_parallel_component/ex5/no_parallel/ex1_non_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "no_parallel",
+    "path": "examples_parallel_component/ex5/no_parallel/no_parallel.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_component",
+    "path": "examples_parallel_component/ex5/parallel_component/ex1_parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "parallel_component",
+    "path": "examples_parallel_component/ex5/parallel_component/parallel_component.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "ex1_parallel_template",
+    "path": "examples_parallel_component/ex5/parallel_template/ex1_parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "parallel_template",
+    "path": "examples_parallel_component/ex5/parallel_template/parallel_template.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside1",
+    "path": "heterogeneous_buses/bus_inside_bus/bus_inside1/bus_inside1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside2",
+    "path": "heterogeneous_buses/bus_inside_bus/bus_inside2/bus_inside2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside3",
+    "path": "heterogeneous_buses/bus_inside_bus/bus_inside3/bus_inside3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside4",
+    "path": "heterogeneous_buses/bus_inside_bus/bus_inside4/bus_inside4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside2",
+    "path": "heterogeneous_buses/bus_inside_bus_multiple_sizes/bus_inside2/bus_inside2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside3",
+    "path": "heterogeneous_buses/bus_inside_bus_multiple_sizes/bus_inside3/bus_inside3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "bus_inside4",
+    "path": "heterogeneous_buses/bus_inside_bus_multiple_sizes/bus_inside4/bus_inside4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple0_complex",
+    "path": "heterogeneous_buses/edge_cases/simple0_complex/simple0_complex.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple0_solved",
+    "path": "heterogeneous_buses/edge_cases/simple0_solved/simple0_solved.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "error_comp",
+    "path": "heterogeneous_buses/fails/error_comp/error_comp.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple0_left",
+    "path": "heterogeneous_buses/fails/simple0_left/simple0_left.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple0",
+    "path": "heterogeneous_buses/simples/simple0/simple0.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple1",
+    "path": "heterogeneous_buses/simples/simple1/simple1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "heterogeneous_buses/simples/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple3",
+    "path": "heterogeneous_buses/simples/simple3/simple3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4",
+    "path": "heterogeneous_buses/simples/simple4/simple4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple5",
+    "path": "heterogeneous_buses/simples/simple5/simple5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple0",
+    "path": "heterogeneous_buses/simples_arrays/simple0/simple0.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple1",
+    "path": "heterogeneous_buses/simples_arrays/simple1/simple1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "heterogeneous_buses/simples_arrays/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple3",
+    "path": "heterogeneous_buses/simples_arrays/simple3/simple3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4",
+    "path": "heterogeneous_buses/simples_arrays/simple4/simple4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4_arrays_heterogeneas",
+    "path": "heterogeneous_buses/simples_arrays/simple4_arrays_heterogeneas/simple4_arrays_heterogeneas.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4_arrays_homogeneas",
+    "path": "heterogeneous_buses/simples_arrays/simple4_arrays_homogeneas/simple4_arrays_homogeneas.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "heterogeneous_buses/simples_arrays_multiple_sizes/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple3",
+    "path": "heterogeneous_buses/simples_arrays_multiple_sizes/simple3/simple3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4",
+    "path": "heterogeneous_buses/simples_arrays_multiple_sizes/simple4/simple4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2",
+    "path": "heterogeneous_buses/simples_multiple_sizes/simple2/simple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple3",
+    "path": "heterogeneous_buses/simples_multiple_sizes/simple3/simple3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4",
+    "path": "heterogeneous_buses/simples_multiple_sizes/simple4/simple4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "function_multiple1",
+    "path": "incomplete_assignments/correct/function_multiple1/function_multiple1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "function_multiple2",
+    "path": "incomplete_assignments/correct/function_multiple2/function_multiple2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "function_multiple3",
+    "path": "incomplete_assignments/correct/function_multiple3/function_multiple3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "function_single",
+    "path": "incomplete_assignments/correct/function_single/function_single.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "function_single_constraints",
+    "path": "incomplete_assignments/correct/function_single_constraints/function_single_constraints.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple",
+    "path": "incomplete_assignments/correct/simple/simple.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "function_multiple1_fails",
+    "path": "incomplete_assignments/fails/function_multiple1_fails/function_multiple1_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "function_multiple_fails",
+    "path": "incomplete_assignments/fails/function_multiple_fails/function_multiple_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "function_single_constraints1_fails",
+    "path": "incomplete_assignments/fails/function_single_constraints1_fails/function_single_constraints1_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid1",
+    "path": "multiple_assignments_analysis/buses_ifs/valid1/valid1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid2",
+    "path": "multiple_assignments_analysis/buses_ifs/valid2/valid2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid3",
+    "path": "multiple_assignments_analysis/buses_ifs/valid3/valid3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid4",
+    "path": "multiple_assignments_analysis/buses_ifs/valid4/valid4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid5",
+    "path": "multiple_assignments_analysis/buses_ifs/valid5/valid5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid6",
+    "path": "multiple_assignments_analysis/buses_ifs/valid6/valid6.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "buses1",
+    "path": "multiple_assignments_analysis/fails/buses1/buses1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "buses2",
+    "path": "multiple_assignments_analysis/fails/buses2/buses2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "buses3",
+    "path": "multiple_assignments_analysis/fails/buses3/buses3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "buses4",
+    "path": "multiple_assignments_analysis/fails/buses4/buses4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "buses5",
+    "path": "multiple_assignments_analysis/fails/buses5/buses5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "example_if_fail",
+    "path": "multiple_assignments_analysis/fails/example_if_fail/example_if_fail.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "example_loop_fail",
+    "path": "multiple_assignments_analysis/fails/example_loop_fail/example_loop_fail.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simples1",
+    "path": "multiple_assignments_analysis/fails/simples1/simples1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simples2",
+    "path": "multiple_assignments_analysis/fails/simples2/simples2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simples3",
+    "path": "multiple_assignments_analysis/fails/simples3/simples3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simples4",
+    "path": "multiple_assignments_analysis/fails/simples4/simples4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simples5",
+    "path": "multiple_assignments_analysis/fails/simples5/simples5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simples7",
+    "path": "multiple_assignments_analysis/fails/simples7/simples7.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simples8",
+    "path": "multiple_assignments_analysis/fails/simples8/simples8.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid1",
+    "path": "multiple_assignments_analysis/simples_ifs/valid1/valid1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid2",
+    "path": "multiple_assignments_analysis/simples_ifs/valid2/valid2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid3",
+    "path": "multiple_assignments_analysis/simples_ifs/valid3/valid3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "valid4",
+    "path": "multiple_assignments_analysis/simples_ifs/valid4/valid4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "RockPaperSissors",
+    "path": "real_world_circuits/RockPapperSissors/RockPaperSissors/RockPaperSissors.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "circuit3",
+    "path": "tags_2.2/fails/circuit3/circuit3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "circuit4",
+    "path": "tags_2.2/fails/circuit4/circuit4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level11_fails",
+    "path": "tags_2.2/fails/multiple_level11_fails/multiple_level11_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level12_fails",
+    "path": "tags_2.2/fails/multiple_level12_fails/multiple_level12_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level13_fails",
+    "path": "tags_2.2/fails/multiple_level13_fails/multiple_level13_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level2_fails",
+    "path": "tags_2.2/fails/multiple_level2_fails/multiple_level2_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level4_fails",
+    "path": "tags_2.2/fails/multiple_level4_fails/multiple_level4_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level6_fails",
+    "path": "tags_2.2/fails/multiple_level6_fails/multiple_level6_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level8_fails",
+    "path": "tags_2.2/fails/multiple_level8_fails/multiple_level8_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level9_fails",
+    "path": "tags_2.2/fails/multiple_level9_fails/multiple_level9_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple2_fails",
+    "path": "tags_2.2/fails/simple2_fails/simple2_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple4_fails",
+    "path": "tags_2.2/fails/simple4_fails/simple4_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple6_fails",
+    "path": "tags_2.2/fails/simple6_fails/simple6_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple8_fails",
+    "path": "tags_2.2/fails/simple8_fails/simple8_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "single1_fails",
+    "path": "tags_2.2/fails/single1_fails/single1_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "single2_fails",
+    "path": "tags_2.2/fails/single2_fails/single2_fails.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level1",
+    "path": "tags_2.2/multiple_level_buses/multiple_level1/multiple_level1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level10",
+    "path": "tags_2.2/multiple_level_buses/multiple_level10/multiple_level10.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level3",
+    "path": "tags_2.2/multiple_level_buses/multiple_level3/multiple_level3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level5",
+    "path": "tags_2.2/multiple_level_buses/multiple_level5/multiple_level5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "multiple_level7",
+    "path": "tags_2.2/multiple_level_buses/multiple_level7/multiple_level7.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "circuit",
+    "path": "tags_2.2/outputs/circuit/circuit.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "circuit1",
+    "path": "tags_2.2/simples/circuit1/circuit1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "circuit2",
+    "path": "tags_2.2/simples/circuit2/circuit2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "inputs_buses",
+    "path": "tags_2.2/simples/inputs_buses/inputs_buses.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple1",
+    "path": "tags_2.2/simples/simple1/simple1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple3",
+    "path": "tags_2.2/simples/simple3/simple3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple5",
+    "path": "tags_2.2/simples/simple5/simple5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "simple7",
+    "path": "tags_2.2/simples/simple7/simple7.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_1",
+    "path": "test_known_unknown/fails/not_correct_1/not_correct_1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_10_cons",
+    "path": "test_known_unknown/fails/not_correct_10_cons/not_correct_10_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_11_cons",
+    "path": "test_known_unknown/fails/not_correct_11_cons/not_correct_11_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_1_cons",
+    "path": "test_known_unknown/fails/not_correct_1_cons/not_correct_1_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_2",
+    "path": "test_known_unknown/fails/not_correct_2/not_correct_2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_3",
+    "path": "test_known_unknown/fails/not_correct_3/not_correct_3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_3_cons",
+    "path": "test_known_unknown/fails/not_correct_3_cons/not_correct_3_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_4",
+    "path": "test_known_unknown/fails/not_correct_4/not_correct_4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_4_cons",
+    "path": "test_known_unknown/fails/not_correct_4_cons/not_correct_4_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_5",
+    "path": "test_known_unknown/fails/not_correct_5/not_correct_5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_5_cons",
+    "path": "test_known_unknown/fails/not_correct_5_cons/not_correct_5_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_6_cons",
+    "path": "test_known_unknown/fails/not_correct_6_cons/not_correct_6_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_7_cons",
+    "path": "test_known_unknown/fails/not_correct_7_cons/not_correct_7_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_8_cons",
+    "path": "test_known_unknown/fails/not_correct_8_cons/not_correct_8_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "not_correct_9_cons",
+    "path": "test_known_unknown/fails/not_correct_9_cons/not_correct_9_cons.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_1",
+    "path": "test_known_unknown/test_arrays/correct_1/correct_1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_2",
+    "path": "test_known_unknown/test_arrays/correct_2/correct_2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_3",
+    "path": "test_known_unknown/test_arrays/correct_3/correct_3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_4",
+    "path": "test_known_unknown/test_arrays/correct_4/correct_4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_5",
+    "path": "test_known_unknown/test_arrays/correct_5/correct_5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_6",
+    "path": "test_known_unknown/test_arrays/correct_6/correct_6.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_7",
+    "path": "test_known_unknown/test_arrays/correct_7/correct_7.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_1",
+    "path": "test_known_unknown/test_constraints/correct_1/correct_1.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_2",
+    "path": "test_known_unknown/test_constraints/correct_2/correct_2.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_3",
+    "path": "test_known_unknown/test_constraints/correct_3/correct_3.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_4",
+    "path": "test_known_unknown/test_constraints/correct_4/correct_4.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_5",
+    "path": "test_known_unknown/test_constraints/correct_5/correct_5.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_6",
+    "path": "test_known_unknown/test_constraints/correct_6/correct_6.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_7",
+    "path": "test_known_unknown/test_constraints/correct_7/correct_7.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_8",
+    "path": "test_known_unknown/test_constraints/correct_8/correct_8.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  },
+  {
+    "benchmark name": "correct_9",
+    "path": "test_known_unknown/test_constraints/correct_9/correct_9.circom",
+    "repository": "git@github.com:costa-group/circom_tests.git",
+    "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
+    "enabled": true
+  }
+]

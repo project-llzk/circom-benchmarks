@@ -294,7 +294,7 @@ def main(argv: list[str] | None = None) -> int:
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("--benchmark_dir", "--benchmark-dir", default=str(DEFAULT_ROOT), help="Benchmark source root.")
-    parser.add_argument("--metadata-file", help="Metadata input; defaults to <benchmark_dir>/benchmark_metadata.json. Explicit paths are relative to the current directory.")
+    parser.add_argument("--metadata-file", help="Metadata input; defaults to this repository's metadata/self.json for its own sources, or metadata/<source-directory-name>.json for external sources. Explicit paths are relative to the current directory.")
     parser.add_argument("--output-dir", help="Output root; defaults to <benchmark_dir>/llzk-outputs. Explicit paths are relative to the current directory.")
     parser.add_argument("-l", "--include-dir", action="append", default=[], help="Additional compiler include directory, relative to the benchmark root. Repeatable.")
     parser.add_argument("--timeout", type=float, default=2, help="Positive per-benchmark timeout in seconds.")
@@ -318,7 +318,7 @@ def main(argv: list[str] | None = None) -> int:
         # make it safe to delete that input's original path during output refresh.
         input_aliases = [
             Path(args.metadata_file).expanduser().absolute()
-            if args.metadata_file is not None else root / "benchmark_metadata.json"
+            if args.metadata_file is not None else metadata_path
         ]
         for value in args.include_dir:
             path = Path(value).expanduser()
