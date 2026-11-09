@@ -7,7 +7,7 @@ import json
 import re
 import sys
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 
 # Match lines like: component main = ... or component main{public [...]} = ...
 MAIN_RE = re.compile(r"\bcomponent\s+main\b.*=")
