@@ -13,22 +13,124 @@ The list of benchmarks is recorded in `benchmark_metadata.json`. It is organized
 - `applications/`: Circom applications and end-to-end circuits.
 - `libs/`: Common and popular Circom libraries used by applications.
 
-Generate or refresh the metadata from the repository root with:
+Both scripts operate on an existing local source directory. Clone repositories,
+check out the revisions you want to measure, and prepare any dependencies before
+running them. Git is optional for local directories; neither script downloads
+sources or installs packages.
+
+## Generating metadata
+
+Generate or refresh the metadata with:
 
 ```
 python3 scripts/benchmark_detector.py
 ```
 
-Generated entries default to `"enabled": true`. Set an entry's `enabled` field to
-`false` in `benchmark_metadata.json` to disable that benchmark. Regenerating the
-metadata preserves existing settings by benchmark path and adds `"enabled": true`
-to entries that do not yet have the field. The evaluator runs only entries with
-`"enabled": true` in the metadata under `--benchmark_dir`.
+Both scripts accept `--benchmark_dir PATH` (also spelled `--benchmark-dir`) and
+default to this repository's root, regardless of the caller's working directory.
+Use `--metadata-file PATH` to keep metadata separately from the source checkout.
+
+| Path | Resolution |
+| --- | --- |
+| `--benchmark_dir` | Relative to the caller's working directory; defaults to this repository |
+| `--metadata-file` | Relative to the caller's working directory; defaults to `<benchmark_dir>/benchmark_metadata.json` |
+| Metadata entry `path` | Relative to `--benchmark_dir`, even when metadata is stored elsewhere |
+| Detector `--scan-dir` and `--exclude` | Relative to `--benchmark_dir` |
+| Evaluator `-l` / `--include-dir` | Relative to `--benchmark_dir`; absolute directories are also accepted |
+| Evaluator `--output-dir` | Relative to the caller's working directory; defaults to `<benchmark_dir>/llzk-outputs` |
+
+The detector finds `.circom` files with an uncommented `component main`
+declaration, including declarations split across lines. Reusable templates
+without a main component need an explicit wrapper that supplies their parameters.
+Use repeatable `--scan-dir` options to scan particular subdirectories or files and
+repeatable `--exclude` options to omit paths. Generated output, dependency, Git,
+and cache directories are skipped by default; see `--help` for the full list.
+Exclusions use `fnmatch` patterns against root-relative POSIX paths, with `*`
+matching `/` as well. A matching directory excludes its descendants. For example,
+`--scan-dir test/circuits` selects Circomlib's test wrappers, while
+`--exclude 'tags_2.2/fails'` excludes that Costa subtree. Regeneration replaces the
+manifest with the discovered selection, so excluded or removed entries disappear.
+
+Generated entries default to `"enabled": true`. Set `enabled` to `false` to disable
+a benchmark. Regeneration preserves settings by relative benchmark path and adds
+`"enabled": true` to legacy entries missing the field. The evaluator runs only
+entries explicitly set to `true`; it does not search the source directory for
+additional benchmarks. Supplied `enabled` values must be JSON booleans. Missing,
+malformed, or duplicate metadata paths are reported before running benchmarks.
+
+When Git is available, generated `repository` and `commit` fields identify the
+source checkout. For vendored circuits, these describe the containing checkout,
+not necessarily the original upstream project.
 
 ## Running LLZK Over Benchmarks
 
 Use the evaluation script with the LLZK-enabled Circom binary:
 
 ```
-python3 scripts/circom_to_llzk_eval.py --[concrete|no-concrete] --benchmark_dir . --timeout [seconds] --circom-bin [path-to-circom-bin]
+python3 scripts/circom_to_llzk_eval.py \
+  --circom-bin /path/to/circom/target/debug/circom \
+  --timeout 10 --nthreads 4 --no-concrete
+```
+
+Concrete mode is the default; use `--no-concrete` for templated mode. The compiler
+runs with the source root as its working directory. Add `-l DIR` repeatedly when
+extra include directories are required; there is no assumed `tests/libs` layout.
+Compilation errors and timeouts are recorded per benchmark so the remaining
+benchmarks can continue. The CSV's `Error Message` field retains up to 4,000
+characters of compiler diagnostics (stderr, or stdout if stderr is empty).
+
+Artifacts, the timing CSV, and `run_info.json` are stored under the output
+directory in separate `concrete/` and `templated/` directories. Circuit artifact
+directories preserve source-relative paths to avoid basename collisions.
+For example, `test/circuits/sign_test.circom` writes under
+`<output-dir>/concrete/circuits/test/circuits/sign_test.circom/`.
+Run information records the selected metadata, compiler identity and options,
+and the checkout revision and dirty state. Use a separate output directory for
+each repository or revision; rerunning the same mode in the same output directory
+replaces its results and refreshes artifacts previously managed by this evaluator.
+An existing nonempty artifact directory without recognized run information is
+left untouched; choose a fresh output directory in that case. Keep source files,
+metadata, compiler binaries, and include directories outside the generated mode
+directory to avoid output collisions.
+
+## External checkouts
+
+For example, from this repository:
+
+```bash
+python3 scripts/benchmark_detector.py \
+  --benchmark_dir ../circomlib \
+  --metadata-file metadata/circomlib.json
+
+# Review enabled flags in metadata/circomlib.json before running.
+python3 scripts/circom_to_llzk_eval.py \
+  --benchmark_dir ../circomlib \
+  --metadata-file metadata/circomlib.json \
+  --output-dir benchmark_reports/circomlib \
+  --circom-bin ../circom/target/debug/circom \
+  --timeout 10 --nthreads 4
+
+python3 scripts/benchmark_detector.py \
+  --benchmark_dir ../costa_circom_tests \
+  --metadata-file metadata/costa_circom_tests.json
+
+python3 scripts/circom_to_llzk_eval.py \
+  --benchmark_dir ../costa_circom_tests \
+  --metadata-file metadata/costa_circom_tests.json \
+  --output-dir benchmark_reports/costa_circom_tests \
+  --circom-bin ../circom/target/debug/circom \
+  --timeout 10 --nthreads 4
+```
+
+Circomlib's `test/circuits` contains instantiated circuits that include library
+templates. The Costa test suite also contains intentional failure fixtures and
+syntax that may not be supported by a particular LLZK compiler build. Discovery
+does not establish compiler compatibility: review enabled flags and disable
+unwanted failure cases, or exclude their paths during detection. Witness inputs
+and JavaScript test dependencies are not required for this compilation benchmark.
+
+## Testing the scripts
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
 ```

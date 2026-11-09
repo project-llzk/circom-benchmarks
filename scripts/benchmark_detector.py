@@ -1,119 +1,178 @@
 #!/usr/bin/env python3
-"""Detect circom benchmarks with `component main` and write benchmark_metadata.json."""
+"""Discover Circom entrypoints in a local source tree and write benchmark metadata."""
 from __future__ import annotations
 
+import argparse
+from fnmatch import fnmatchcase
+import os
 from pathlib import Path
-import json
 import re
-import sys
 
-ROOT = Path(__file__).resolve().parent.parent
+from benchmark_common import (
+    DEFAULT_ROOT,
+    git_info,
+    load_metadata,
+    resolve_metadata_path,
+    resolve_root,
+    write_json,
+)
 
-# Match lines like: component main = ... or component main{public [...]} = ...
-MAIN_RE = re.compile(r"\bcomponent\s+main\b.*=")
-# Extract commit suffix like name-abcdef1
-COMMIT_RE = re.compile(r"(.*?)-([0-9a-fA-F]{7,})$")
+ROOT = DEFAULT_ROOT
+DEFAULT_EXCLUDED_DIRS = frozenset(
+    {
+        ".git", "node_modules", "llzk-outputs", "__pycache__", ".pytest_cache",
+        ".venv", "target", "build", "dist", "benchmark_reports",
+        ".artifacts",
+    }
+)
+# Mask strings as well as comments so log messages and include paths cannot look
+# like entrypoints or start comments. Keep whitespace between adjacent tokens.
+NON_CODE_RE = re.compile(r'"(?:\\[\s\S]|[^"\\])*(?:"|\Z)|//[^\r\n]*|/\*[\s\S]*?(?:\*/|\Z)')
+MAIN_RE = re.compile(r"\bcomponent\s+main\b\s*(?:\{[^{}]*\}\s*)?=", re.ASCII)
 
 
-def strip_comments(lines):
-    in_block = False
-    for line in lines:
-        s = line
-        i = 0
-        while i < len(s):
-            if in_block:
-                end = s.find("*/", i)
-                if end == -1:
-                    s = ""
-                    break
-                in_block = False
-                i = end + 2
-                continue
-            start = s.find("/*", i)
-            line_comment = s.find("//", i)
-            if line_comment != -1 and (start == -1 or line_comment < start):
-                s = s[:line_comment]
-                break
-            if start != -1:
-                end = s.find("*/", start + 2)
-                if end == -1:
-                    s = s[:start]
-                    in_block = True
-                    break
-                s = s[:start] + s[end + 2 :]
-                i = start
-                continue
-            break
-        yield s
+def mask_comments_and_strings(text: str) -> str:
+    return NON_CODE_RE.sub(
+        lambda match: "".join(c if c in "\r\n" else " " for c in match.group()),
+        text,
+    )
 
 
 def has_component_main(path: Path) -> bool:
+    """Recognize main declarations across lines, ignoring comments and strings."""
     try:
-        text = path.read_text(errors="ignore")
-    except Exception:
-        return False
-    for line in strip_comments(text.splitlines()):
-        if MAIN_RE.search(line):
-            return True
-    return False
+        text = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as error:
+        raise ValueError(f"Cannot read circuit {path}: {error}") from error
+    return MAIN_RE.search(mask_comments_and_strings(text)) is not None
 
 
-def benchmark_name(path: Path) -> str:
-    rel = path.relative_to(ROOT)
+def benchmark_name(path: Path, root: Path = DEFAULT_ROOT) -> str:
+    rel = path.relative_to(root)
     stem = path.stem
     if stem != "main":
         return stem
-    # For main.circom, use directory name under applications/ or libs/ if present.
+    # Retain the existing display names for this repository's applications.
     parts = rel.parts
-    if len(parts) >= 2 and parts[0] in {"applications", "libs"}:
+    if len(parts) >= 2 and parts[0] in {"applications", "libs", "lib"}:
         return parts[1]
-    if len(parts) >= 2 and parts[0] == "lib":
-        return parts[1]
-    if rel.parent.name:
-        return rel.parent.name
-    return stem
+    return rel.parent.name or stem
 
 
-def build_entries():
-    """Discover benchmarks, preserving enabled settings by repository-relative path."""
-    metadata_path = ROOT / "benchmark_metadata.json"
-    enabled_by_path = {}
+def _excluded(relative_path: Path, patterns, *, is_dir: bool) -> bool:
+    """Match directories and ancestors too, including explicitly selected scopes."""
+    parts = relative_path.parts if is_dir else relative_path.parts[:-1]
+    if any(part in DEFAULT_EXCLUDED_DIRS for part in parts):
+        return True
+    candidates = [relative_path.as_posix()]
+    candidates.extend(parent.as_posix() for parent in relative_path.parents if parent != Path("."))
+    return any(fnmatchcase(candidate, pattern) for candidate in candidates for pattern in patterns)
+
+
+def discover_circuits(root: Path, scan_dirs=None, exclude_patterns=None):
+    """Yield sorted unique circuit paths without following directory symlinks.
+
+    Exclusions use fnmatch against POSIX root-relative paths; '*' also matches
+    '/'. A matching directory excludes all of its descendants.
+    """
+    root = resolve_root(root)
+    patterns = [pattern.rstrip("/") for pattern in (exclude_patterns or [])]
+    paths = set()
+    for scope in scan_dirs or ["."]:
+        relative_scope = Path(scope)
+        if relative_scope.is_absolute():
+            raise ValueError(f"Scan scope must be relative to the benchmark directory: {scope}")
+        candidate = Path(os.path.abspath(root / relative_scope))
+        resolved = candidate.resolve()
+        if not resolved.is_relative_to(root):
+            raise ValueError(f"Scan scope is outside the benchmark directory: {scope}")
+        if not candidate.exists():
+            raise ValueError(f"Scan scope does not exist: {candidate}")
+        # An explicit symlink scope must not bypass the no-directory-symlinks rule.
+        if (candidate.is_dir() and candidate.is_symlink()) or any(
+            parent.is_symlink()
+            for parent in candidate.parents
+            if parent != root and parent.is_relative_to(root)
+        ):
+            continue
+        if _excluded(candidate.relative_to(root), patterns, is_dir=candidate.is_dir()):
+            continue
+        if candidate.is_file():
+            if candidate.suffix != ".circom":
+                raise ValueError(f"Scan scope is not a Circom file: {candidate}")
+            paths.add(candidate)
+            continue
+        if not candidate.is_dir():
+            raise ValueError(f"Scan scope is not a directory or Circom file: {candidate}")
+
+        def on_error(error):
+            raise ValueError(f"Cannot scan benchmark directory: {error}") from error
+
+        for directory, dirs, files in os.walk(candidate, followlinks=False, onerror=on_error):
+            directory = Path(directory)
+            dirs[:] = sorted(
+                name for name in dirs
+                if not (directory / name).is_symlink()
+                and not _excluded((directory / name).relative_to(root), patterns, is_dir=True)
+            )
+            for filename in files:
+                path = directory / filename
+                if path.suffix != ".circom" or _excluded(path.relative_to(root), patterns, is_dir=False):
+                    continue
+                if not path.resolve().is_relative_to(root):
+                    raise ValueError(f"Circuit symlink is outside the benchmark directory: {path}")
+                paths.add(path)
+    return sorted(paths)
+
+
+def build_entries(root=DEFAULT_ROOT, metadata_path=None, scan_dirs=None, exclude_patterns=None):
+    """Discover benchmarks, preserving existing settings by source-relative path."""
+    root = resolve_root(root)
+    metadata_path = resolve_metadata_path(root, metadata_path)
+    existing = {}
     if metadata_path.exists():
-        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
-        enabled_by_path = {
-            entry["path"]: entry.get("enabled", True) is True for entry in metadata
-        }
-
+        existing = {entry["path"]: entry for entry in load_metadata(metadata_path)}
+    provenance = git_info(root)
     entries = []
-    for path in sorted(ROOT.rglob("*.circom")):
+    for path in discover_circuits(root, scan_dirs, exclude_patterns):
         if not has_component_main(path):
             continue
-        name = benchmark_name(path)
-        repo = ""
-        commit = ""
-        m = COMMIT_RE.match(name)
-        if m:
-            repo = m.group(1)
-            commit = m.group(2)
-        relative_path = str(path.relative_to(ROOT))
-        entries.append(
+        relative_path = path.relative_to(root).as_posix()
+        previous = existing.get(relative_path, {})
+        entry = dict(previous)
+        entry.update(
             {
-                "benchmark name": name,
+                "benchmark name": benchmark_name(path, root),
                 "path": relative_path,
-                "repository": repo,
-                "commit": commit,
-                "enabled": enabled_by_path.get(relative_path, True),
+                "repository": provenance["repository"],
+                "commit": provenance["commit"],
+                "enabled": previous.get("enabled", True),
             }
         )
+        entries.append(entry)
     return entries
 
 
-def main() -> int:
-    entries = build_entries()
-    out_path = ROOT / "benchmark_metadata.json"
-    out_path.write_text(json.dumps(entries, indent=2) + "\n")
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+        epilog="Directory names excluded at every depth: " + ", ".join(sorted(DEFAULT_EXCLUDED_DIRS)) + ". Directory symlinks are not followed.",
+    )
+    parser.add_argument("--benchmark_dir", "--benchmark-dir", default=str(DEFAULT_ROOT),
+                        help="Local directory containing benchmark sources.")
+    parser.add_argument("--metadata-file", help="Metadata output path, relative to the current directory; defaults to <benchmark_dir>/benchmark_metadata.json.")
+    parser.add_argument("--scan-dir", action="append", help="Source-root-relative directory or .circom file to scan; repeat for multiple scopes. Defaults to the whole source root.")
+    parser.add_argument("--exclude", action="append", default=[], help="Exclude root-relative fnmatch patterns; '*' also matches '/'. Matching directories exclude descendants. Repeat as needed.")
+    args = parser.parse_args(argv)
+    try:
+        root = resolve_root(args.benchmark_dir)
+        out_path = resolve_metadata_path(root, args.metadata_file)
+        entries = build_entries(root, out_path, args.scan_dir, args.exclude)
+        write_json(out_path, entries)
+    except (OSError, ValueError) as error:
+        parser.error(str(error))
     print(out_path)
-    print(len(entries))
+    print(f"Detected {len(entries)} benchmarks ({sum(entry['enabled'] for entry in entries)} enabled)")
     return 0
 
 
