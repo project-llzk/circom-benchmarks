@@ -2,7 +2,7 @@
 
 # Program: circom_to_llzk_eval.py
 # Description: This script runs the circom -> llzk frontend
-#   on circom-benchmarks and writes a CSV with timing results.
+#   on benchmarks listed in benchmark_metadata.json and writes a CSV with timing results.
 #
 # Required Programs:
 #   - python3: For running this script
@@ -22,35 +22,19 @@
 import argparse
 import csv
 import datetime
+import json
 import multiprocessing
 import os
-import re
 import subprocess
 import time
 from typing import List, Tuple
 
-# Allow optional public inputs block before '='
-MAIN_COMPONENT_RE = re.compile(r"^\s*component\s+main\b.*=", re.ASCII)
-
-def get_circom_entrypoints(benchmark_dir: str, exclude_dirs: List[str] = None) -> List[str]:
-    """Return sorted circom entrypoints that define `component main` under a benchmark dir."""
-    exclude_abs = set(os.path.abspath(d) for d in (exclude_dirs or []))
-    circom_entrypoints = []
-    for root, dirs, files in os.walk(benchmark_dir):
-        dirs[:] = [d for d in dirs if os.path.abspath(os.path.join(root, d)) not in exclude_abs]
-        for filename in files:
-            if not filename.endswith(".circom"):
-                continue
-            path = os.path.join(root, filename)
-            try:
-                with open(path, "r", encoding="utf-8") as handle:
-                    for line in handle:
-                        if MAIN_COMPONENT_RE.match(line):
-                            circom_entrypoints.append(path)
-                            break
-            except OSError:
-                continue
-    return sorted(circom_entrypoints)
+def load_benchmarks(benchmark_dir: str) -> List[str]:
+    """Return sorted benchmark paths listed in benchmark_metadata.json."""
+    metadata_path = os.path.join(benchmark_dir, "benchmark_metadata.json")
+    with open(metadata_path, "r", encoding="utf-8") as handle:
+        entries = json.load(handle)
+    return sorted(os.path.join(benchmark_dir, entry["path"]) for entry in entries)
 
 def _run_task_unpack(packed: Tuple) -> Tuple[str, str, str, str]:
     return run_task(*packed)
@@ -136,7 +120,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
     start = time.time()
     print(f"{args.benchmark_dir = }")
-    files = get_circom_entrypoints(args.benchmark_dir, exclude_dirs=["llzk-outputs"])
+    try:
+        files = load_benchmarks(args.benchmark_dir)
+    except (OSError, json.JSONDecodeError) as error:
+        parser.error(f"Cannot load benchmark metadata: {error}")
     run_circom_benchmarks(
         files,
         args.benchmark_dir,
