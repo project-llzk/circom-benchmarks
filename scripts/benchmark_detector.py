@@ -75,6 +75,15 @@ def benchmark_name(path: Path) -> str:
 
 
 def build_entries():
+    """Discover benchmarks, preserving enabled settings by repository-relative path."""
+    metadata_path = ROOT / "benchmark_metadata.json"
+    enabled_by_path = {}
+    if metadata_path.exists():
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        enabled_by_path = {
+            entry["path"]: entry.get("enabled", True) is True for entry in metadata
+        }
+
     entries = []
     for path in sorted(ROOT.rglob("*.circom")):
         if not has_component_main(path):
@@ -86,12 +95,14 @@ def build_entries():
         if m:
             repo = m.group(1)
             commit = m.group(2)
+        relative_path = str(path.relative_to(ROOT))
         entries.append(
             {
                 "benchmark name": name,
-                "path": str(path.relative_to(ROOT)),
+                "path": relative_path,
                 "repository": repo,
                 "commit": commit,
+                "enabled": enabled_by_path.get(relative_path, True),
             }
         )
     return entries

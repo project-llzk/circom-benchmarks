@@ -30,11 +30,15 @@ import time
 from typing import List, Tuple
 
 def load_benchmarks(benchmark_dir: str) -> List[str]:
-    """Return sorted benchmark paths listed in benchmark_metadata.json."""
+    """Return sorted paths explicitly enabled in benchmark_metadata.json."""
     metadata_path = os.path.join(benchmark_dir, "benchmark_metadata.json")
     with open(metadata_path, "r", encoding="utf-8") as handle:
         entries = json.load(handle)
-    return sorted(os.path.join(benchmark_dir, entry["path"]) for entry in entries)
+    return sorted(
+        os.path.join(benchmark_dir, entry["path"])
+        for entry in entries
+        if entry.get("enabled") is True
+    )
 
 def _run_task_unpack(packed: Tuple) -> Tuple[str, str, str, str]:
     return run_task(*packed)
