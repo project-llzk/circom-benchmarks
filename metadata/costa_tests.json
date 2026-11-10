@@ -1709,7 +1709,7 @@
     "repository": "git@github.com:costa-group/circom_tests.git",
     "commit": "e71231a7ed131417ae7dd23848aef865cd1947db",
     "enabled": true,
-    "expected": "failure"
+    "expected": "success"
   },
   {
     "benchmark name": "not_correct_11_cons",
