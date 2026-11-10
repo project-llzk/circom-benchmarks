@@ -82,7 +82,7 @@ python3 scripts/circom_to_llzk_eval.py \
 
 ## Results
 
-`--output-dir` defaults to `<source-root>/llzk-outputs`. Each mode has its own
+`--output-dir` defaults to `<source-root>/llzk_outputs`. Each mode has its own
 directory containing circuit artifacts, a timing CSV, and `run_info.json` with
 compiler settings and source provenance. Rerunning a mode replaces its managed
 artifacts and results; use separate output directories to retain multiple runs.

@@ -220,7 +220,7 @@ def run_circom_benchmarks(
     """Run selected benchmarks and write artifacts, CSV results, and run provenance."""
     root = resolve_root(benchmark_dir)
     llzk_opt = "concrete" if concrete else "templated"
-    destination = (Path(output_dir).expanduser() if output_dir is not None else root / "llzk-outputs").resolve()
+    destination = (Path(output_dir).expanduser() if output_dir is not None else root / "llzk_outputs").resolve()
     mode_dir = destination / llzk_opt
     include_dirs = include_dirs or []
     output_path = mode_dir / f"circom_benchmarks_results_{llzk_opt}.csv"
@@ -328,7 +328,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--benchmark_dir", "--benchmark-dir", default=str(DEFAULT_ROOT), help="Benchmark source root.")
     parser.add_argument("--metadata-file", help="Metadata input; defaults to this repository's metadata/self.json for its own sources, or metadata/<source-directory-name>.json for external sources. Explicit paths are relative to the current directory.")
-    parser.add_argument("--output-dir", help="Output root; defaults to <benchmark_dir>/llzk-outputs. Explicit paths are relative to the current directory.")
+    parser.add_argument("--output-dir", help="Output root; defaults to <benchmark_dir>/llzk_outputs. Explicit paths are relative to the current directory.")
     parser.add_argument("-l", "--include-dir", action="append", default=[], help="Additional compiler include directory, relative to the benchmark root. Repeatable.")
     parser.add_argument("--timeout", type=float, default=2, help="Positive per-benchmark timeout in seconds.")
     parser.add_argument("--concrete", action=argparse.BooleanOptionalAction, default=True)

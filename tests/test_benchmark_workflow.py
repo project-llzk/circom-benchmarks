@@ -156,7 +156,7 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.circuit("library.circom", "template Example() {}\n")
         self.circuit("fails/example.circom")
         self.circuit("tags/outputs/main.circom")
-        for directory in (".git", "node_modules", "llzk-outputs", "__pycache__"):
+        for directory in (".git", "node_modules", "llzk_outputs", "__pycache__"):
             self.circuit(f"{directory}/ignored.circom")
         outside = self.workspace / "linked sources"
         outside.mkdir()
@@ -311,7 +311,7 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertEqual(info["compiler"]["path"], str(self.compiler))
         self.assertIn("test fixture", info["compiler"]["version"])
         self.assertEqual([entry["path"] for entry in info["benchmarks"]], ["listed.circom"])
-        self.assertFalse((self.caller / "llzk-outputs").exists())
+        self.assertFalse((self.caller / "llzk_outputs").exists())
 
     def test_output_paths_and_modes_do_not_collide(self):
         sources = ["a/b.circom", "a_b.circom", "a.circom"]

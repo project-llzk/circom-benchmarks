@@ -8,4 +8,4 @@ tags/
 .artifacts
 node_modules
 benchmark_reports
-llzk-outputs
+llzk_outputs
