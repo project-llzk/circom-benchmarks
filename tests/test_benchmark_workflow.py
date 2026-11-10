@@ -572,6 +572,101 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertIs(dirty_info["source"]["dirty"], True)
 
     @unittest.skipUnless(shutil.which("git"), "Git is required for provenance tests")
+    def test_evaluator_provenance_ignores_managed_outputs(self):
+        source = self.circuit("main.circom")
+        original = source.read_text()
+
+        def git(*arguments):
+            return subprocess.check_output(
+                [
+                    "git", "-C", str(self.root),
+                    "-c", "user.name=Benchmark Test",
+                    "-c", "user.email=benchmark-test@example.invalid",
+                    "-c", "commit.gpgsign=false",
+                    "-c", "core.hooksPath=/dev/null",
+                    *arguments,
+                ],
+                text=True, stderr=subprocess.PIPE, timeout=10,
+            ).strip()
+
+        git("init", "--quiet")
+        git("config", "core.excludesFile", "/dev/null")
+        git("add", "main.circom")
+        git("commit", "--quiet", "-m", "Fixture circuit")
+        revision = git("rev-parse", "HEAD")
+        self.detect()
+
+        for output in (None, self.root / "reports [local]", self.root):
+            with self.subTest(output=output):
+                destination = output if output is not None else self.root / "llzk_outputs"
+
+                def evaluate(mode="concrete"):
+                    arguments = [
+                        "--benchmark-dir", self.root,
+                        "--metadata-file", self.metadata,
+                        "--circom-bin", self.compiler,
+                        "--nthreads", "1",
+                    ]
+                    if output is not None:
+                        arguments.extend(["--output-dir", output])
+                    if mode == "templated":
+                        arguments.append("--no-concrete")
+                    self.run_script(EVALUATOR, *arguments)
+                    info = json.loads((destination / mode / "run_info.json").read_text())
+                    self.assertEqual(info["source"]["commit"], revision)
+                    return info["source"]["dirty"]
+
+                try:
+                    for mode in ("concrete", "concrete", "templated", "concrete"):
+                        self.assertIs(evaluate(mode), False)
+                    self.assertIs(benchmark_common.git_info(self.root)["dirty"], True)
+
+                    source.write_text(original + "// local edit\n")
+                    self.assertIs(evaluate(), True)
+                    git("add", "main.circom")
+                    self.assertIs(evaluate(), True)
+                    source.write_text(original)
+                    git("add", "main.circom")
+
+                    # Unmanaged files still count, even within a mode directory.
+                    note = destination / "concrete" / "notes.txt"
+                    note.write_text("Untracked user file\n")
+                    self.assertIs(evaluate(), True)
+                    note.unlink()
+                    self.assertIs(evaluate(), False)
+                finally:
+                    source.write_text(original)
+                    git("add", "main.circom")
+                    for mode in ("concrete", "templated"):
+                        shutil.rmtree(destination / mode, ignore_errors=True)
+
+    @unittest.skipUnless(shutil.which("git"), "Git is required for provenance tests")
+    def test_git_status_exclusions_are_literal_and_repository_wide(self):
+        subprocess.run(["git", "init", "--quiet", str(self.root)], check=True)
+        subprocess.run(
+            ["git", "-C", str(self.root), "config", "core.excludesFile", "/dev/null"],
+            check=True,
+        )
+        nested = self.root / "nested"
+        nested.mkdir()
+        output = self.root / "reports [local]"
+        output.mkdir()
+        (output / "generated.txt").write_text("Generated output\n")
+        exclusions = [output, self.output]  # Outside-repository paths are harmless.
+        self.assertIs(benchmark_common.git_info(nested, exclude_paths=exclusions)["dirty"], False)
+
+        # This sibling would be hidden by a glob exclusion or a subdirectory-only check.
+        sibling = self.root / "reports l"
+        sibling.mkdir()
+        (sibling / "source.circom").write_text("component main = Example();\n")
+        self.assertIs(benchmark_common.git_info(nested, exclude_paths=exclusions)["dirty"], True)
+        alias = output / "source-link"
+        alias.symlink_to(sibling, target_is_directory=True)
+        self.assertIs(
+            benchmark_common.git_info(nested, exclude_paths=[*exclusions, alias])["dirty"], True,
+        )
+
+    @unittest.skipUnless(shutil.which("git"), "Git is required for provenance tests")
     def test_git_provenance_strips_url_userinfo(self):
         self.circuit("main.circom")
 

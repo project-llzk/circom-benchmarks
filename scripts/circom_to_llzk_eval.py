@@ -233,12 +233,18 @@ def run_circom_benchmarks(
         entry["path"]: entry.get("expected", "success")
         for entry in (metadata_entries or [])
     }
+    # Exclude both modes' generated files, even when the destination is the source root.
+    managed_outputs = [
+        destination / mode / name
+        for mode in ("concrete", "templated")
+        for name in ("circuits", "run_info.json", f"circom_benchmarks_results_{mode}.csv")
+    ]
     run_info = {
         "artifact_layout_version": ARTIFACT_LAYOUT_VERSION,
         "started_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "benchmark_dir": str(root),
         "metadata_file": str(metadata_path) if metadata_path is not None else None,
-        "source": git_info(root),
+        "source": git_info(root, exclude_paths=managed_outputs),
         "compiler": compiler_info,
         "options": {
             "mode": llzk_opt,

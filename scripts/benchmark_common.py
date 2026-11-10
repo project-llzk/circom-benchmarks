@@ -66,8 +66,8 @@ def load_metadata(path: Path) -> list:
     return entries
 
 
-def git_info(root: Path) -> dict:
-    """Describe a local checkout; plain directories and missing Git are supported."""
+def git_info(root: Path, exclude_paths=()) -> dict:
+    """Describe a checkout, optionally excluding generated paths from its status."""
     def read(*args):
         try:
             result = subprocess.run(
@@ -78,9 +78,19 @@ def git_info(root: Path) -> dict:
             return None
         return result.stdout.strip() if result.returncode == 0 else None
 
-    if read("rev-parse", "--show-toplevel") is None:
+    toplevel = read("rev-parse", "--show-toplevel")
+    if toplevel is None:
         return {"repository": "", "commit": "", "dirty": None}
-    status = read("status", "--porcelain", "--untracked-files=normal")
+    checkout = Path(toplevel).resolve()
+    pathspecs = [":/"]  # Keep checking the whole checkout when root is a subdirectory.
+    for path in exclude_paths:
+        try:
+            # Exclude the named entry, not a symlink's potentially unrelated target.
+            relative = Path(path).absolute().relative_to(checkout)
+        except ValueError:
+            continue
+        pathspecs.append(f":(top,exclude,literal){relative.as_posix()}")
+    status = read("status", "--porcelain", "--untracked-files=normal", "--", *pathspecs)
     repository = read("remote", "get-url", "origin") or ""
     # Remove URL userinfo without changing scp-style remotes or local paths.
     repository = re.sub(r"^([A-Za-z][A-Za-z0-9+.-]*://)[^/?#]*@", r"\1", repository)
