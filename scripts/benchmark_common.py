@@ -3,6 +3,7 @@
 import json
 import os
 from pathlib import Path, PurePosixPath
+import stat
 import subprocess
 import tempfile
 
@@ -87,7 +88,7 @@ def git_info(root: Path) -> dict:
 
 
 def write_json(path: Path, data) -> None:
-    """Replace a JSON file only after its complete new contents have been written."""
+    """Atomically write JSON, preserving permissions when the destination exists."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = None
@@ -99,6 +100,12 @@ def write_json(path: Path, data) -> None:
             temporary = Path(handle.name)
             json.dump(data, handle, indent=2)
             handle.write("\n")
+        try:
+            mode = stat.S_IMODE(path.stat().st_mode)
+        except FileNotFoundError:
+            pass
+        else:
+            temporary.chmod(mode)
         os.replace(temporary, path)
     finally:
         if temporary is not None:
