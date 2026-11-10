@@ -57,6 +57,10 @@ def load_metadata(path: Path) -> list:
         entry["path"] = normalized
         if "enabled" in entry and not isinstance(entry["enabled"], bool):
             raise ValueError(f"{label} enabled must be a boolean")
+        expected = entry.get("expected", "success")
+        if expected not in ("success", "failure"):
+            raise ValueError(f"{label} expected must be 'success' or 'failure'")
+        entry["expected"] = expected
     return entries
 
 

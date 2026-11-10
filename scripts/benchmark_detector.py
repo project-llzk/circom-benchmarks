@@ -147,6 +147,7 @@ def build_entries(root=DEFAULT_ROOT, metadata_path=None, scan_dirs=None, exclude
                 "repository": provenance["repository"],
                 "commit": provenance["commit"],
                 "enabled": previous.get("enabled", True),
+                "expected": previous.get("expected", "success"),
             }
         )
         entries.append(entry)

@@ -15,7 +15,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import time
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 from benchmark_common import (
     DEFAULT_ROOT,
@@ -28,6 +28,7 @@ from benchmark_common import (
 
 ARTIFACT_LAYOUT_VERSION = 1
 ERROR_MESSAGE_MAX_CHARS = 4000
+TaskResult = Tuple[str, str, str, str, Optional[int]]
 
 
 def _contains(parent: Path, child: Path) -> bool:
@@ -166,25 +167,40 @@ def compiler_identity(binary: str) -> dict:
     }
 
 
-def _run_task_unpack(packed: Tuple) -> Tuple[str, str, str, str]:
+def _run_task_unpack(packed: Tuple) -> TaskResult:
     return run_task(*packed)
 
 
-def run_task(benchmark_name: str, args: List[str], timeout: float, cwd: str | None = None) -> Tuple[str, str, str, str]:
+def run_task(benchmark_name: str, args: List[str], timeout: float, cwd: str | None = None) -> TaskResult:
     start = time.perf_counter()
     try:
         proc = subprocess.run(args, capture_output=True, text=True, timeout=timeout, cwd=cwd)
         elapsed = time.perf_counter() - start
         if proc.returncode == 0:
-            return (benchmark_name, "success", f"{elapsed:.6f}", "")
+            return (benchmark_name, "success", f"{elapsed:.6f}", "", proc.returncode)
         error_message = (proc.stderr or proc.stdout).strip()[:ERROR_MESSAGE_MAX_CHARS] or f"exit code {proc.returncode}"
-        return (benchmark_name, "error", f"{elapsed:.6f}", error_message)
+        return (benchmark_name, "error", f"{elapsed:.6f}", error_message, proc.returncode)
     except subprocess.TimeoutExpired:
         elapsed = time.perf_counter() - start
-        return (benchmark_name, "timeout", f"{elapsed:.6f}", "timeout")
+        return (benchmark_name, "timeout", f"{elapsed:.6f}", "timeout", None)
     except OSError as error:
         elapsed = time.perf_counter() - start
-        return (benchmark_name, "error", f"{elapsed:.6f}", str(error)[:ERROR_MESSAGE_MAX_CHARS])
+        return (benchmark_name, "error", f"{elapsed:.6f}", str(error)[:ERROR_MESSAGE_MAX_CHARS], None)
+
+
+def expectation_matches(expected: str, actual: str, exit_code: int | None) -> bool:
+    """A failure expectation requires compiler rejection, not a timeout or crash."""
+    if expected == "success":
+        return actual == "success" and exit_code == 0
+    # Signals have negative return codes; Rust panics conventionally exit 101.
+    # Neither is evidence that the compiler correctly rejected the circuit.
+    return (
+        expected == "failure"
+        and actual == "error"
+        and exit_code is not None
+        and exit_code > 0
+        and exit_code != 101
+    )
 
 
 def run_circom_benchmarks(
@@ -213,6 +229,10 @@ def run_circom_benchmarks(
         mode_dir, root, protected_sources, metadata_path, circom_bin, include_dirs, output_path,
         input_aliases or [],
     )
+    expected_by_path = {
+        entry["path"]: entry.get("expected", "success")
+        for entry in (metadata_entries or [])
+    }
     run_info = {
         "artifact_layout_version": ARTIFACT_LAYOUT_VERSION,
         "started_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
@@ -228,7 +248,8 @@ def run_circom_benchmarks(
             "output_dir": str(destination),
         },
         "benchmarks": sorted(
-            (entry for entry in (metadata_entries or []) if entry.get("enabled") is True),
+            (dict(entry, expected=entry.get("expected", "success"))
+             for entry in (metadata_entries or []) if entry.get("enabled") is True),
             key=lambda entry: entry["path"],
         ),
         "commands": [],
@@ -276,14 +297,26 @@ def run_circom_benchmarks(
 
     results.sort()
     counts = {cause: sum(result[1] == cause for result in results) for cause in ("success", "error", "timeout")}
+    rows = []
+    counts.update(matched=0, mismatched=0)
+    for benchmark_name, actual, elapsed, message, exit_code in results:
+        expected = expected_by_path.get(benchmark_name, "success")
+        matches = expectation_matches(expected, actual, exit_code)
+        expectation = "match" if matches else "mismatch"
+        counts["matched" if matches else "mismatched"] += 1
+        rows.append((benchmark_name, actual, elapsed, message, expected, expectation, exit_code))
+        if not matches:
+            status = f"exit code {exit_code}" if exit_code is not None else "no exit code"
+            print(f"Mismatch: {benchmark_name}: expected {expected}, got {actual} ({status})")
     with output_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["Benchmark", "Result", "Time Seconds", "Error Message"])
-        writer.writerows(results)
+        writer.writerow(["Benchmark", "Result", "Time Seconds", "Error Message", "Expected", "Expectation", "Exit Code"])
+        writer.writerows(rows)
     run_info["completed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     run_info["results_summary"] = counts
     write_json(mode_dir / "run_info.json", run_info)
     print(f"success: {counts['success']}, errored: {counts['error']}, timeout: {counts['timeout']}")
+    print(f"matched: {counts['matched']}, mismatched: {counts['mismatched']}")
     print(f"Results: {output_path}")
     return str(output_path)
 
@@ -329,17 +362,19 @@ def main(argv: list[str] | None = None) -> int:
             input_aliases.append(Path(compiler_alias).absolute())
         print(f"Benchmark directory: {root}")
         print(f"Metadata: {metadata_path}")
-        run_circom_benchmarks(
+        output_path = run_circom_benchmarks(
             files, root, args.timeout, args.concrete,
             compiler["path"] if compiler is not None else args.circom_bin,
             args.nthreads, args.output_dir, includes, metadata_path, entries, compiler,
             input_aliases,
         )
+        with (Path(output_path).parent / "run_info.json").open(encoding="utf-8") as handle:
+            summary = json.load(handle)["results_summary"]
     except (OSError, ValueError) as error:
         parser.error(str(error))
     elapsed = datetime.timedelta(seconds=time.perf_counter() - start)
     print(f"Total benchmark execution time: {elapsed}")
-    return 0
+    return 1 if summary["mismatched"] else 0
 
 
 if __name__ == "__main__":

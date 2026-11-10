@@ -42,7 +42,9 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
             + textwrap.dedent(
                 f"""\
                 import json
+                import os
                 from pathlib import Path
+                import signal
                 import sys
                 import time
 
@@ -61,6 +63,11 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
                 if "FAIL_COMPILATION" in source.read_text():
                     print("fixture compilation error", file=sys.stderr)
                     raise SystemExit(1)
+                if "PANIC_COMPILATION" in source.read_text():
+                    print("fixture compiler panic", file=sys.stderr)
+                    raise SystemExit(101)
+                if "SIGNAL_COMPILATION" in source.read_text():
+                    os.kill(os.getpid(), signal.SIGTERM)
                 if "SLOW_COMPILATION" in source.read_text():
                     time.sleep(2)
                 (output / "invocation.json").write_text(json.dumps({{
@@ -167,13 +174,14 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
             },
         )
         self.assertTrue(all(entry["enabled"] is True for entry in entries))
+        self.assertTrue(all(entry["expected"] == "success" for entry in entries))
         self.assertFalse((self.root / "benchmark_metadata.json").exists())
 
     def test_detector_preserves_toggles_and_upgrades_legacy_entries(self):
         self.circuit("first/main.circom")
         self.circuit("second/main.circom")
         self.write_metadata([
-            {"path": "first/main.circom", "benchmark name": "same", "enabled": False},
+            {"path": "first/main.circom", "benchmark name": "same", "enabled": False, "expected": "failure"},
             {"path": "second/main.circom", "benchmark name": "same"},
         ])
         self.circuit("new.circom")
@@ -182,6 +190,10 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertEqual(
             {entry["path"]: entry["enabled"] for entry in entries},
             {"first/main.circom": False, "second/main.circom": True, "new.circom": True},
+        )
+        self.assertEqual(
+            {entry["path"]: entry["expected"] for entry in entries},
+            {"first/main.circom": "failure", "second/main.circom": "success", "new.circom": "success"},
         )
         once = self.metadata.read_bytes()
         self.detect()
@@ -325,11 +337,91 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
             {"path": "good.circom", "enabled": True},
             {"path": "bad.circom", "enabled": True},
         ])
-        self.evaluate()
+        self.evaluate(expected=1)
         rows = {row["Benchmark"]: row for row in self.read_results()}
         self.assertEqual(rows["good.circom"]["Result"], "success")
         self.assertEqual(rows["bad.circom"]["Result"], "error")
         self.assertIn("fixture compilation error", rows["bad.circom"]["Error Message"])
+        self.assertEqual(rows["bad.circom"]["Expected"], "success")
+        self.assertEqual(rows["bad.circom"]["Expectation"], "mismatch")
+        self.assertEqual(rows["bad.circom"]["Exit Code"], "1")
+
+    def test_expected_outcomes_match_and_mismatch_in_serial_and_parallel_runs(self):
+        cases = {
+            "matching_success.circom": ("success", "success", "match", "0"),
+            "matching_failure.circom": ("failure", "error", "match", "1"),
+            "unexpected_success.circom": ("failure", "success", "mismatch", "0"),
+            "unexpected_failure.circom": ("success", "error", "mismatch", "1"),
+        }
+        for path, (_, actual, _, _) in cases.items():
+            self.circuit(path, "FAIL_COMPILATION\n" if actual == "error" else "component main = Example();\n")
+        self.write_metadata([
+            {"path": path, "enabled": True, "expected": expected}
+            for path, (expected, _, _, _) in cases.items()
+        ])
+        for workers in (1, 2):
+            with self.subTest(workers=workers):
+                result = self.evaluate("--nthreads", str(workers), expected=1)
+                rows = {row["Benchmark"]: row for row in self.read_results()}
+                self.assertEqual(set(rows), set(cases))
+                for path, (expected, actual, assessment, exit_code) in cases.items():
+                    row = rows[path]
+                    self.assertEqual(
+                        (row["Expected"], row["Result"], row["Expectation"], row["Exit Code"]),
+                        (expected, actual, assessment, exit_code),
+                    )
+                self.assertIn("fixture compilation error", rows["matching_failure.circom"]["Error Message"])
+                self.assertIn("unexpected_success.circom", result.stdout)
+                self.assertIn("unexpected_failure.circom", result.stdout)
+                info = json.loads((self.output / "concrete" / "run_info.json").read_text())
+                self.assertEqual(info["results_summary"]["matched"], 2)
+                self.assertEqual(info["results_summary"]["mismatched"], 2)
+                self.assertEqual(info["results_summary"]["success"], 2)
+                self.assertEqual(info["results_summary"]["error"], 2)
+
+    def test_expected_compilation_failures_exit_successfully(self):
+        self.circuit("invalid.circom", "FAIL_COMPILATION\n")
+        self.circuit("valid.circom")
+        self.write_metadata([
+            {"path": "invalid.circom", "enabled": True, "expected": "failure"},
+            {"path": "valid.circom", "enabled": True, "expected": "success"},
+        ])
+        self.evaluate("--nthreads", "2")
+        rows = self.read_results()
+        self.assertEqual([row["Expectation"] for row in rows], ["match", "match"])
+        self.assertEqual([row["Result"] for row in rows], ["error", "success"])
+        info = json.loads((self.output / "concrete" / "run_info.json").read_text())
+        self.assertEqual(info["results_summary"]["mismatched"], 0)
+        self.assertEqual(info["results_summary"]["matched"], 2)
+
+    def test_crashes_do_not_satisfy_expected_failure(self):
+        self.circuit("panic.circom", "PANIC_COMPILATION\n")
+        self.circuit("signal.circom", "SIGNAL_COMPILATION\n")
+        self.write_metadata([
+            {"path": path, "enabled": True, "expected": "failure"}
+            for path in ("panic.circom", "signal.circom")
+        ])
+        self.evaluate(expected=1)
+        rows = {row["Benchmark"]: row for row in self.read_results()}
+        for row in rows.values():
+            self.assertEqual(row["Result"], "error")
+            self.assertEqual(row["Expectation"], "mismatch")
+        self.assertEqual(rows["panic.circom"]["Exit Code"], "101")
+        self.assertLess(int(rows["signal.circom"]["Exit Code"]), 0)
+
+    def test_launch_errors_do_not_satisfy_expected_failure(self):
+        source = self.circuit("main.circom")
+        entries = [{"path": "main.circom", "enabled": True, "expected": "failure"}]
+        with contextlib.redirect_stdout(io.StringIO()):
+            circom_to_llzk_eval.run_circom_benchmarks(
+                [str(source)], self.root, 1, True,
+                str(self.workspace / "missing-executable"), 1,
+                output_dir=self.output, metadata_entries=entries,
+            )
+        row = self.read_results()[0]
+        self.assertEqual(row["Result"], "error")
+        self.assertEqual(row["Expectation"], "mismatch")
+        self.assertEqual(row["Exit Code"], "")
 
     def test_failed_rerun_removes_prior_successful_artifacts(self):
         source = self.circuit("main.circom")
@@ -338,7 +430,7 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertEqual(len(list(self.output.rglob("*.llzk"))), 1)
 
         source.write_text("FAIL_COMPILATION\n")
-        self.evaluate()
+        self.evaluate(expected=1)
         self.assertEqual(self.read_results()[0]["Result"], "error")
         self.assertEqual(list(self.output.rglob("*.llzk")), [])
 
@@ -414,15 +506,19 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
     def test_evaluator_records_timeout_and_continues(self):
         self.circuit("a_slow.circom", "SLOW_COMPILATION\n")
         self.circuit("z_fast.circom")
-        self.write_metadata([
-            {"path": "a_slow.circom", "enabled": True},
-            {"path": "z_fast.circom", "enabled": True},
-        ])
-        self.evaluate("--timeout", "0.5")
-        rows = {row["Benchmark"]: row for row in self.read_results()}
-        self.assertEqual(rows["a_slow.circom"]["Result"], "timeout")
-        self.assertEqual(rows["z_fast.circom"]["Result"], "success")
-        self.assertIn("timeout", rows["a_slow.circom"]["Error Message"])
+        for expected_outcome in ("success", "failure"):
+            with self.subTest(expected_outcome=expected_outcome):
+                self.write_metadata([
+                    {"path": "a_slow.circom", "enabled": True, "expected": expected_outcome},
+                    {"path": "z_fast.circom", "enabled": True},
+                ])
+                self.evaluate("--timeout", "0.5", expected=1)
+                rows = {row["Benchmark"]: row for row in self.read_results()}
+                self.assertEqual(rows["a_slow.circom"]["Result"], "timeout")
+                self.assertEqual(rows["a_slow.circom"]["Expectation"], "mismatch")
+                self.assertEqual(rows["a_slow.circom"]["Exit Code"], "")
+                self.assertEqual(rows["z_fast.circom"]["Result"], "success")
+                self.assertIn("timeout", rows["a_slow.circom"]["Error Message"])
 
     def test_evaluator_rejects_source_symlink_outside_root(self):
         outside = self.workspace / "outside.circom"
@@ -483,6 +579,10 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
             [{"enabled": True}],
             [{"path": "valid.circom", "enabled": "true"}],
             [{"path": "valid.circom", "enabled": 1}],
+            [{"path": "valid.circom", "enabled": True, "expected": "error"}],
+            [{"path": "valid.circom", "enabled": True, "expected": True}],
+            [{"path": "valid.circom", "enabled": True, "expected": None}],
+            [{"path": "valid.circom", "enabled": True, "expected": ["success"]}],
             [{"path": "../escape.circom", "enabled": True}],
             [{"path": str(self.root / "valid.circom"), "enabled": True}],
             [{"path": "valid.circom", "enabled": True}, {"path": "valid.circom", "enabled": False}],
