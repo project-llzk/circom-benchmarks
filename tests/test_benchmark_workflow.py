@@ -571,6 +571,38 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertEqual(dirty_info["source"]["commit"], revision)
         self.assertIs(dirty_info["source"]["dirty"], True)
 
+    @unittest.skipUnless(shutil.which("git"), "Git is required for provenance tests")
+    def test_git_provenance_strips_url_userinfo(self):
+        self.circuit("main.circom")
+
+        def git(*arguments):
+            subprocess.run(
+                ["git", "-C", str(self.root), *arguments],
+                check=True, capture_output=True, text=True, timeout=10,
+            )
+
+        git("init", "--quiet")
+        git("remote", "add", "origin", "https://example.invalid/repo.git")
+        cases = [
+            ("https://user:fake-token@example.invalid/repo.git", "https://example.invalid/repo.git"),
+            ("https://fake-token@example.invalid/repo.git", "https://example.invalid/repo.git"),
+            ("http://user:fake%40token@[::1]:8080/repo.git", "http://[::1]:8080/repo.git"),
+            ("https://example.invalid/repo@ref.git", "https://example.invalid/repo@ref.git"),
+            ("ssh://git@example.invalid:2222/repo.git", "ssh://example.invalid:2222/repo.git"),
+            ("git@example.invalid:repo.git", "git@example.invalid:repo.git"),
+            ("/local/repo@ref.git", "/local/repo@ref.git"),
+        ]
+        for origin, expected in cases:
+            with self.subTest(origin=origin):
+                git("remote", "set-url", "origin", origin)
+                self.detect()
+                self.evaluate()
+                entries = json.loads(self.metadata.read_text())
+                info = json.loads((self.output / "concrete" / "run_info.json").read_text())
+                self.assertEqual(entries[0]["repository"], expected)
+                self.assertEqual(info["source"]["repository"], expected)
+                self.assertEqual(info["benchmarks"][0]["repository"], expected)
+
     def test_evaluator_rejects_invalid_metadata_before_compiling(self):
         self.circuit("valid.circom")
         invalid_cases = [

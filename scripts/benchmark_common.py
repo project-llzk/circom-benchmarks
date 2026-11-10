@@ -3,6 +3,7 @@
 import json
 import os
 from pathlib import Path, PurePosixPath
+import re
 import stat
 import subprocess
 import tempfile
@@ -80,8 +81,11 @@ def git_info(root: Path) -> dict:
     if read("rev-parse", "--show-toplevel") is None:
         return {"repository": "", "commit": "", "dirty": None}
     status = read("status", "--porcelain", "--untracked-files=normal")
+    repository = read("remote", "get-url", "origin") or ""
+    # Remove URL userinfo without changing scp-style remotes or local paths.
+    repository = re.sub(r"^([A-Za-z][A-Za-z0-9+.-]*://)[^/?#]*@", r"\1", repository)
     return {
-        "repository": read("remote", "get-url", "origin") or "",
+        "repository": repository,
         "commit": read("rev-parse", "HEAD") or "",
         "dirty": bool(status) if status is not None else None,
     }
