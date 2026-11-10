@@ -53,6 +53,9 @@ python3 scripts/circom_to_llzk_eval.py \
   --timeout 10 --nthreads 4
 ```
 
+`--circom-bin` should point directly to the compiler executable. Wrappers may
+alter exit statuses and cause crashes to be counted as expected failures.
+
 Concrete mode is the default; add `--no-concrete` for templated mode. `--timeout`
 sets the limit per circuit. Add `-l DIR` or `--include-dir DIR` repeatedly for
 additional compiler include directories.
@@ -90,6 +93,7 @@ artifacts and results; use separate output directories to retain multiple runs.
 The CSV records actual `Result`, `Expected`, `Expectation` (`match` or `mismatch`),
 exit code, timing, and up to 4,000 characters of compiler diagnostics. An expected
 failure matches a positive nonzero compiler exit other than Rust panic code 101.
-Timeouts, launch errors, signal termination, and panics are always mismatches.
+Timeouts, launch errors, and signal terminations reported as negative return
+codes are mismatches.
 The evaluator continues after individual compilation failures and exits **0**
 when all outcomes match, **1** for mismatches, or **2** for setup errors.

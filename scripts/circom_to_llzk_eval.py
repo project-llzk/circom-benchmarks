@@ -332,7 +332,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("-l", "--include-dir", action="append", default=[], help="Additional compiler include directory, relative to the benchmark root. Repeatable.")
     parser.add_argument("--timeout", type=float, default=2, help="Positive per-benchmark timeout in seconds.")
     parser.add_argument("--concrete", action=argparse.BooleanOptionalAction, default=True)
-    parser.add_argument("--circom-bin", default="circom", help="Path or PATH name of the LLZK-enabled Circom executable.")
+    parser.add_argument("--circom-bin", default="circom", help="Path or PATH name of the LLZK-enabled Circom executable. Use the compiler directly: wrappers may alter exit statuses and cause incorrect expectation matches.")
     parser.add_argument("--nthreads", type=int, default=os.cpu_count() or 1, help="Number of parallel jobs.")
     args = parser.parse_args(argv)
     if args.nthreads < 1:
