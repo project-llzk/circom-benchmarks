@@ -310,13 +310,13 @@ def run_circom_benchmarks(
         matches = expectation_matches(expected, actual, exit_code)
         expectation = "match" if matches else "mismatch"
         counts["matched" if matches else "mismatched"] += 1
-        rows.append((benchmark_name, actual, elapsed, message, expected, expectation, exit_code))
+        rows.append((benchmark_name, elapsed, actual, expected, expectation, exit_code, message))
         if not matches:
             status = f"exit code {exit_code}" if exit_code is not None else "no exit code"
             print(f"Mismatch: {benchmark_name}: expected {expected}, got {actual} ({status})")
     with output_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["Benchmark", "Result", "Time Seconds", "Error Message", "Expected", "Expectation", "Exit Code"])
+        writer.writerow(["Benchmark", "Time Seconds", "Result", "Expected", "Expectation", "Exit Code", "Error Message"])
         writer.writerows(rows)
     run_info["completed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     run_info["results_summary"] = counts
