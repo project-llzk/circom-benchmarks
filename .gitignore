@@ -1,11 +1,18 @@
-outputs/
-.idea
-tests/Output
-.lit_test_times.txt
-.DS_Store
-tags/
-*.swp
+# Generated artifacts
+benchmark_results
 .artifacts
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# JavaScript dependencies
 node_modules
-benchmark_reports
-llzk_outputs
+
+# Editors and operating system
+.idea
+*.swp
+.DS_Store

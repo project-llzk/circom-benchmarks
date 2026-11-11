@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 """Discover Circom entrypoints in a local source tree and write benchmark metadata."""
-from __future__ import annotations
-
 import argparse
 from fnmatch import fnmatchcase
 import os
@@ -17,11 +15,10 @@ from benchmark_common import (
     write_json,
 )
 
-ROOT = DEFAULT_ROOT
 DEFAULT_EXCLUDED_DIRS = frozenset(
     {
-        ".git", "node_modules", "llzk_outputs", "__pycache__", ".pytest_cache",
-        ".venv", "target", "build", "dist", "benchmark_reports",
+        ".git", "node_modules", "__pycache__", ".pytest_cache",
+        ".venv", "target", "build", "dist", "benchmark_results",
         ".artifacts",
     }
 )
@@ -70,7 +67,7 @@ def _excluded(relative_path: Path, patterns, *, is_dir: bool) -> bool:
 
 
 def discover_circuits(root: Path, scan_dirs=None, exclude_patterns=None):
-    """Yield sorted unique circuit paths without following directory symlinks.
+    """Return sorted unique circuit paths without following directory symlinks.
 
     Exclusions use fnmatch against POSIX root-relative paths; '*' also matches
     '/'. A matching directory excludes all of its descendants.
@@ -159,7 +156,7 @@ def main(argv=None) -> int:
         description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         epilog="Directory names excluded at every depth: " + ", ".join(sorted(DEFAULT_EXCLUDED_DIRS)) + ". Directory symlinks are not followed.",
     )
-    parser.add_argument("--benchmark_dir", "--benchmark-dir", default=str(DEFAULT_ROOT),
+    parser.add_argument("--benchmark-dir", "--benchmark_dir", default=str(DEFAULT_ROOT),
                         help="Local directory containing benchmark sources.")
     parser.add_argument("--metadata-file", help="Metadata output path, relative to the current directory; defaults to this repository's metadata/self.json for its own sources, or metadata/<source-directory-name>.json for external sources.")
     parser.add_argument("--scan-dir", action="append", help="Source-root-relative directory or .circom file to scan; repeat for multiple scopes. Defaults to the whole source root.")

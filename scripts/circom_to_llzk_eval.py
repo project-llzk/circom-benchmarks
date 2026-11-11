@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Run metadata-selected Circom benchmarks through the LLZK frontend."""
 
-from __future__ import annotations
-
 import argparse
 import csv
 import datetime
@@ -15,28 +13,20 @@ from pathlib import Path
 import shutil
 import subprocess
 import time
-from typing import List, Optional, Tuple
 
 from benchmark_common import (
     DEFAULT_ROOT,
     git_info,
     load_metadata,
     resolve_metadata_path,
+    resolve_output_dir,
     resolve_root,
     write_json,
 )
 
 ARTIFACT_LAYOUT_VERSION = 1
 ERROR_MESSAGE_MAX_CHARS = 4000
-TaskResult = Tuple[str, str, str, str, Optional[int]]
-
-
-def _contains(parent: Path, child: Path) -> bool:
-    try:
-        child.relative_to(parent)
-        return True
-    except ValueError:
-        return False
+type TaskResult = tuple[str, str, str, str, int | None]
 
 
 def _same_file(left: Path, right: Path) -> bool:
@@ -48,7 +38,7 @@ def _same_file(left: Path, right: Path) -> bool:
 def _validate_output_layout(
     mode_dir: Path,
     root: Path,
-    benchmarks: List[str],
+    benchmarks: list[str],
     metadata_path: Path | None,
     compiler_path: str,
     include_dirs: list[Path],
@@ -67,7 +57,7 @@ def _validate_output_layout(
     for path in (info_path, csv_path):
         if path.exists() and not path.is_file():
             raise ValueError(f"Managed output file is not a file: {path}")
-    if _contains(mode_dir, root):
+    if root.is_relative_to(mode_dir):
         raise ValueError(f"Output mode directory must not contain the benchmark source root: {mode_dir}")
 
     protected = [Path(path) for path in benchmarks] + list(include_dirs) + input_aliases
@@ -79,7 +69,7 @@ def _validate_output_layout(
     if resolved_compiler is not None:
         protected.append(Path(resolved_compiler).absolute())
     for path in protected:
-        if _contains(artifacts_dir, path.absolute()) or _contains(artifacts_dir, path.resolve()):
+        if path.absolute().is_relative_to(artifacts_dir) or path.resolve().is_relative_to(artifacts_dir):
             raise ValueError(f"Input path overlaps managed artifact output: {path}")
         if any(_same_file(path, output) for output in (info_path, csv_path)):
             raise ValueError(f"Input path overlaps a managed output file: {path}")
@@ -100,7 +90,7 @@ def _validate_output_layout(
     return artifacts_dir
 
 
-def _selected_paths(root: Path, entries: list[dict]) -> List[str]:
+def _selected_paths(root: Path, entries: list[dict]) -> list[str]:
     """Validate enabled sources without inspecting or discovering circuits."""
     paths = []
     for entry in entries:
@@ -118,7 +108,7 @@ def _selected_paths(root: Path, entries: list[dict]) -> List[str]:
     return sorted(paths)
 
 
-def load_benchmarks(benchmark_dir: str | Path, metadata_path: str | Path | None = None) -> List[str]:
+def load_benchmarks(benchmark_dir: str | Path, metadata_path: str | Path | None = None) -> list[str]:
     """Return validated paths explicitly enabled in the selected metadata file."""
     root = resolve_root(benchmark_dir)
     return _selected_paths(root, load_metadata(resolve_metadata_path(root, metadata_path)))
@@ -150,7 +140,8 @@ def compiler_identity(binary: str) -> dict:
         raise ValueError(f"Circom executable does not exist or is not executable: {executable}")
     try:
         version = subprocess.run(
-            [str(executable), "--version"], capture_output=True, text=True, timeout=10,
+            [str(executable), "--version"], capture_output=True,
+            encoding="utf-8", errors="replace", timeout=10,
         )
     except subprocess.TimeoutExpired as error:
         raise ValueError(f"Circom --version timed out: {executable}") from error
@@ -167,14 +158,17 @@ def compiler_identity(binary: str) -> dict:
     }
 
 
-def _run_task_unpack(packed: Tuple) -> TaskResult:
+def _run_task_unpack(packed: tuple) -> TaskResult:
     return run_task(*packed)
 
 
-def run_task(benchmark_name: str, args: List[str], timeout: float, cwd: str | None = None) -> TaskResult:
+def run_task(benchmark_name: str, args: list[str], timeout: float, cwd: str | None = None) -> TaskResult:
     start = time.perf_counter()
     try:
-        proc = subprocess.run(args, capture_output=True, text=True, timeout=timeout, cwd=cwd)
+        proc = subprocess.run(
+            args, capture_output=True, encoding="utf-8", errors="replace",
+            timeout=timeout, cwd=cwd,
+        )
         elapsed = time.perf_counter() - start
         if proc.returncode == 0:
             return (benchmark_name, "success", f"{elapsed:.6f}", "", proc.returncode)
@@ -204,7 +198,7 @@ def expectation_matches(expected: str, actual: str, exit_code: int | None) -> bo
 
 
 def run_circom_benchmarks(
-    benchmarks: List[str],
+    benchmarks: list[str],
     benchmark_dir: str | Path,
     timeout: float,
     concrete: bool,
@@ -220,7 +214,7 @@ def run_circom_benchmarks(
     """Run selected benchmarks and write artifacts, CSV results, and run provenance."""
     root = resolve_root(benchmark_dir)
     llzk_opt = "concrete" if concrete else "templated"
-    destination = (Path(output_dir).expanduser() if output_dir is not None else root / "llzk_outputs").resolve()
+    destination = resolve_output_dir(root, output_dir)
     mode_dir = destination / llzk_opt
     include_dirs = include_dirs or []
     output_path = mode_dir / f"circom_benchmarks_results_{llzk_opt}.csv"
@@ -310,13 +304,13 @@ def run_circom_benchmarks(
         matches = expectation_matches(expected, actual, exit_code)
         expectation = "match" if matches else "mismatch"
         counts["matched" if matches else "mismatched"] += 1
-        rows.append((benchmark_name, actual, elapsed, message, expected, expectation, exit_code))
+        rows.append((benchmark_name, elapsed, actual, expected, expectation, exit_code, message))
         if not matches:
             status = f"exit code {exit_code}" if exit_code is not None else "no exit code"
             print(f"Mismatch: {benchmark_name}: expected {expected}, got {actual} ({status})")
     with output_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["Benchmark", "Result", "Time Seconds", "Error Message", "Expected", "Expectation", "Exit Code"])
+        writer.writerow(["Benchmark", "Time Seconds", "Result", "Expected", "Expectation", "Exit Code", "Error Message"])
         writer.writerows(rows)
     run_info["completed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     run_info["results_summary"] = counts
@@ -332,9 +326,9 @@ def main(argv: list[str] | None = None) -> int:
         description="Run enabled Circom benchmarks selected exclusively by metadata.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    parser.add_argument("--benchmark_dir", "--benchmark-dir", default=str(DEFAULT_ROOT), help="Benchmark source root.")
+    parser.add_argument("--benchmark-dir", "--benchmark_dir", default=str(DEFAULT_ROOT), help="Benchmark source root.")
     parser.add_argument("--metadata-file", help="Metadata input; defaults to this repository's metadata/self.json for its own sources, or metadata/<source-directory-name>.json for external sources. Explicit paths are relative to the current directory.")
-    parser.add_argument("--output-dir", help="Output root; defaults to <benchmark_dir>/llzk_outputs. Explicit paths are relative to the current directory.")
+    parser.add_argument("--output-dir", help="Suite output root; defaults to this repository's benchmark_results/self for its own sources, or benchmark_results/<source-directory-name> for external sources. Mode directories are created beneath it. Explicit paths are relative to the current directory.")
     parser.add_argument("-l", "--include-dir", action="append", default=[], help="Additional compiler include directory, relative to the benchmark root. Repeatable.")
     parser.add_argument("--timeout", type=float, default=2, help="Positive per-benchmark timeout in seconds.")
     parser.add_argument("--concrete", action=argparse.BooleanOptionalAction, default=True)

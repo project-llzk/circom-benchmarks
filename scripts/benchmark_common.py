@@ -19,12 +19,22 @@ def resolve_root(value=DEFAULT_ROOT) -> Path:
     return root
 
 
+def _suite_name(root: Path) -> str:
+    root = Path(root).expanduser().resolve()
+    return "self" if root == DEFAULT_ROOT else root.name
+
+
 def resolve_metadata_path(root: Path, value=None) -> Path:
     """Default to this repository's metadata directory; explicit paths use cwd."""
     if value is None:
-        root = Path(root).expanduser().resolve()
-        name = "self" if root == DEFAULT_ROOT else root.name
-        return DEFAULT_ROOT / "metadata" / f"{name}.json"
+        return DEFAULT_ROOT / "metadata" / f"{_suite_name(root)}.json"
+    return Path(value).expanduser().resolve()
+
+
+def resolve_output_dir(root: Path, value=None) -> Path:
+    """Default to this repository's suite results directory; explicit paths use cwd."""
+    if value is None:
+        return (DEFAULT_ROOT / "benchmark_results" / _suite_name(root)).resolve()
     return Path(value).expanduser().resolve()
 
 
