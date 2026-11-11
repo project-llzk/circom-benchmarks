@@ -3,9 +3,10 @@
 Generate benchmark metadata and measure Circom-to-LLZK compilation using
 [LLZK-enabled Circom](https://github.com/project-llzk/circom).
 
-Requires Python 3.9+ and a built Circom executable. Clone source repositories at
-the desired revisions and prepare their dependencies before benchmarking. Run
-the examples below from this repository's root.
+Requires Python 3.12+ and a built LLZK-enabled Circom executable. The scripts use
+only the Python standard library. Clone source repositories at the desired
+revisions and prepare their dependencies before benchmarking. Run the examples
+below from this repository's root.
 
 ## Metadata
 
@@ -15,7 +16,7 @@ Generate or refresh metadata for this repository:
 python3 scripts/benchmark_detector.py
 ```
 
-Both scripts accept `--benchmark_dir PATH` (alias `--benchmark-dir`) and default
+Both scripts accept `--benchmark-dir PATH` (alias `--benchmark_dir`) and default
 to this repository's source root. Metadata defaults to this repository's
 `metadata/self.json`, or `metadata/<source-directory-name>.json` for external
 sources. Override the filename with `--metadata-file PATH`.
@@ -63,22 +64,22 @@ additional compiler include directories.
 For external checkouts, generate metadata and run each suite:
 
 ```bash
-python3 scripts/benchmark_detector.py --benchmark_dir ../circomlib
+python3 scripts/benchmark_detector.py --benchmark-dir ../circomlib
 
 python3 scripts/circom_to_llzk_eval.py \
-  --benchmark_dir ../circomlib \
+  --benchmark-dir ../circomlib \
   --circom-bin ../circom/target/debug/circom \
-  --timeout 10 --nthreads 4
+  --timeout 30
 
 python3 scripts/benchmark_detector.py \
-  --benchmark_dir ../costa_circom_tests \
+  --benchmark-dir ../costa_circom_tests \
   --metadata-file metadata/costa_tests.json
 
 python3 scripts/circom_to_llzk_eval.py \
-  --benchmark_dir ../costa_circom_tests \
+  --benchmark-dir ../costa_circom_tests \
   --metadata-file metadata/costa_tests.json \
   --circom-bin ../circom/target/debug/circom \
-  --timeout 10 --nthreads 4
+  --timeout 30
 ```
 
 ## Results
@@ -95,10 +96,10 @@ benchmark_results/
 │   ├── concrete/
 │   └── templated/
 ├── circomlib/
-│   └── concrete/
+│   ├── concrete/
 │   └── templated/
 └── costa_circom_tests/
-    └── concrete/
+    ├── concrete/
     └── templated/
 ```
 
@@ -110,9 +111,13 @@ are created.
 `--output-dir PATH` overrides the suite directory: results go directly under
 `PATH/<mode>/`, with relative paths resolved from the caller's working directory.
 Rerunning a mode replaces its managed artifacts and results; use separate output
-directories to retain multiple runs or distinguish external checkouts with the
-same directory name. `benchmark_results/` is ignored by Git and excluded from
-benchmark discovery.
+directories to retain multiple runs. For checkouts with the same directory name
+(or an external checkout named `self`), set both `--metadata-file` and
+`--output-dir` to distinct paths. `benchmark_results/` is ignored by Git and
+excluded from benchmark discovery.
+
+The CSV and completion summary are written after all tasks finish. An interrupted
+run can leave circuit artifacts and an initial `run_info.json` without a CSV.
 
 The CSV records actual `Result`, `Expected`, `Expectation` (`match` or `mismatch`),
 exit code, timing, and up to 4,000 characters of compiler diagnostics. An expected

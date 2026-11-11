@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Run metadata-selected Circom benchmarks through the LLZK frontend."""
 
-from __future__ import annotations
-
 import argparse
 import csv
 import datetime
@@ -15,7 +13,6 @@ from pathlib import Path
 import shutil
 import subprocess
 import time
-from typing import List, Optional, Tuple
 
 from benchmark_common import (
     DEFAULT_ROOT,
@@ -29,15 +26,7 @@ from benchmark_common import (
 
 ARTIFACT_LAYOUT_VERSION = 1
 ERROR_MESSAGE_MAX_CHARS = 4000
-TaskResult = Tuple[str, str, str, str, Optional[int]]
-
-
-def _contains(parent: Path, child: Path) -> bool:
-    try:
-        child.relative_to(parent)
-        return True
-    except ValueError:
-        return False
+type TaskResult = tuple[str, str, str, str, int | None]
 
 
 def _same_file(left: Path, right: Path) -> bool:
@@ -49,7 +38,7 @@ def _same_file(left: Path, right: Path) -> bool:
 def _validate_output_layout(
     mode_dir: Path,
     root: Path,
-    benchmarks: List[str],
+    benchmarks: list[str],
     metadata_path: Path | None,
     compiler_path: str,
     include_dirs: list[Path],
@@ -68,7 +57,7 @@ def _validate_output_layout(
     for path in (info_path, csv_path):
         if path.exists() and not path.is_file():
             raise ValueError(f"Managed output file is not a file: {path}")
-    if _contains(mode_dir, root):
+    if root.is_relative_to(mode_dir):
         raise ValueError(f"Output mode directory must not contain the benchmark source root: {mode_dir}")
 
     protected = [Path(path) for path in benchmarks] + list(include_dirs) + input_aliases
@@ -80,7 +69,7 @@ def _validate_output_layout(
     if resolved_compiler is not None:
         protected.append(Path(resolved_compiler).absolute())
     for path in protected:
-        if _contains(artifacts_dir, path.absolute()) or _contains(artifacts_dir, path.resolve()):
+        if path.absolute().is_relative_to(artifacts_dir) or path.resolve().is_relative_to(artifacts_dir):
             raise ValueError(f"Input path overlaps managed artifact output: {path}")
         if any(_same_file(path, output) for output in (info_path, csv_path)):
             raise ValueError(f"Input path overlaps a managed output file: {path}")
@@ -101,7 +90,7 @@ def _validate_output_layout(
     return artifacts_dir
 
 
-def _selected_paths(root: Path, entries: list[dict]) -> List[str]:
+def _selected_paths(root: Path, entries: list[dict]) -> list[str]:
     """Validate enabled sources without inspecting or discovering circuits."""
     paths = []
     for entry in entries:
@@ -119,7 +108,7 @@ def _selected_paths(root: Path, entries: list[dict]) -> List[str]:
     return sorted(paths)
 
 
-def load_benchmarks(benchmark_dir: str | Path, metadata_path: str | Path | None = None) -> List[str]:
+def load_benchmarks(benchmark_dir: str | Path, metadata_path: str | Path | None = None) -> list[str]:
     """Return validated paths explicitly enabled in the selected metadata file."""
     root = resolve_root(benchmark_dir)
     return _selected_paths(root, load_metadata(resolve_metadata_path(root, metadata_path)))
@@ -151,7 +140,8 @@ def compiler_identity(binary: str) -> dict:
         raise ValueError(f"Circom executable does not exist or is not executable: {executable}")
     try:
         version = subprocess.run(
-            [str(executable), "--version"], capture_output=True, text=True, timeout=10,
+            [str(executable), "--version"], capture_output=True,
+            encoding="utf-8", errors="replace", timeout=10,
         )
     except subprocess.TimeoutExpired as error:
         raise ValueError(f"Circom --version timed out: {executable}") from error
@@ -168,14 +158,17 @@ def compiler_identity(binary: str) -> dict:
     }
 
 
-def _run_task_unpack(packed: Tuple) -> TaskResult:
+def _run_task_unpack(packed: tuple) -> TaskResult:
     return run_task(*packed)
 
 
-def run_task(benchmark_name: str, args: List[str], timeout: float, cwd: str | None = None) -> TaskResult:
+def run_task(benchmark_name: str, args: list[str], timeout: float, cwd: str | None = None) -> TaskResult:
     start = time.perf_counter()
     try:
-        proc = subprocess.run(args, capture_output=True, text=True, timeout=timeout, cwd=cwd)
+        proc = subprocess.run(
+            args, capture_output=True, encoding="utf-8", errors="replace",
+            timeout=timeout, cwd=cwd,
+        )
         elapsed = time.perf_counter() - start
         if proc.returncode == 0:
             return (benchmark_name, "success", f"{elapsed:.6f}", "", proc.returncode)
@@ -205,7 +198,7 @@ def expectation_matches(expected: str, actual: str, exit_code: int | None) -> bo
 
 
 def run_circom_benchmarks(
-    benchmarks: List[str],
+    benchmarks: list[str],
     benchmark_dir: str | Path,
     timeout: float,
     concrete: bool,
@@ -333,7 +326,7 @@ def main(argv: list[str] | None = None) -> int:
         description="Run enabled Circom benchmarks selected exclusively by metadata.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    parser.add_argument("--benchmark_dir", "--benchmark-dir", default=str(DEFAULT_ROOT), help="Benchmark source root.")
+    parser.add_argument("--benchmark-dir", "--benchmark_dir", default=str(DEFAULT_ROOT), help="Benchmark source root.")
     parser.add_argument("--metadata-file", help="Metadata input; defaults to this repository's metadata/self.json for its own sources, or metadata/<source-directory-name>.json for external sources. Explicit paths are relative to the current directory.")
     parser.add_argument("--output-dir", help="Suite output root; defaults to this repository's benchmark_results/self for its own sources, or benchmark_results/<source-directory-name> for external sources. Mode directories are created beneath it. Explicit paths are relative to the current directory.")
     parser.add_argument("-l", "--include-dir", action="append", default=[], help="Additional compiler include directory, relative to the benchmark root. Repeatable.")

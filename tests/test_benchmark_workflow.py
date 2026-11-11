@@ -1,4 +1,4 @@
-"""Regression tests for metadata-driven benchmarks in external directories."""
+"""Regression tests for metadata-driven benchmark discovery and evaluation."""
 
 import contextlib
 import csv
@@ -60,6 +60,9 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
                 assert output.is_absolute() and output.is_dir(), output
                 includes = [args[i + 1] for i, arg in enumerate(args) if arg == "-l"]
                 assert all(Path(p).is_absolute() and Path(p).is_dir() for p in includes), includes
+                if "NON_UTF8_DIAGNOSTICS" in source.read_text():
+                    os.write(2, b"fixture compilation error: " + bytes([255]))
+                    raise SystemExit(1)
                 if "FAIL_COMPILATION" in source.read_text():
                     print("fixture compilation error", file=sys.stderr)
                     raise SystemExit(1)
@@ -106,6 +109,19 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
             f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}",
         )
         return result
+
+    def git(self, *arguments):
+        return subprocess.check_output(
+            [
+                "git", "-C", str(self.root),
+                "-c", "user.name=Benchmark Test",
+                "-c", "user.email=benchmark-test@example.invalid",
+                "-c", "commit.gpgsign=false",
+                "-c", "core.hooksPath=/dev/null",
+                *arguments,
+            ],
+            text=True, stderr=subprocess.PIPE, timeout=10,
+        ).strip()
 
     def detect(self, *arguments, expected=0):
         return self.run_script(
@@ -175,7 +191,6 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         )
         self.assertTrue(all(entry["enabled"] is True for entry in entries))
         self.assertTrue(all(entry["expected"] == "success" for entry in entries))
-        self.assertFalse((self.root / "benchmark_metadata.json").exists())
 
     def test_detector_preserves_toggles_and_upgrades_legacy_entries(self):
         self.circuit("first/main.circom")
@@ -238,7 +253,6 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertEqual(info["metadata_file"], str(expected_metadata))
         self.assertEqual(info["options"]["output_dir"], str(self.output))
         self.assertEqual(len(self.invocations()), 1)
-        self.assertFalse((self.root / "benchmark_metadata.json").exists())
         self.assertFalse((self.root / "metadata").exists())
         self.assertFalse((self.caller / "metadata").exists())
         self.assertFalse((self.root / "benchmark_results").exists())
@@ -378,6 +392,23 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertEqual(rows["bad.circom"]["Expected"], "success")
         self.assertEqual(rows["bad.circom"]["Expectation"], "mismatch")
         self.assertEqual(rows["bad.circom"]["Exit Code"], "1")
+
+    def test_non_utf8_compiler_diagnostics_do_not_abort_the_run(self):
+        self.circuit("a_bad.circom", "NON_UTF8_DIAGNOSTICS\n")
+        self.circuit("z_good.circom")
+        self.write_metadata([
+            {"path": "a_bad.circom", "enabled": True, "expected": "failure"},
+            {"path": "z_good.circom", "enabled": True},
+        ])
+        for workers in (1, 2):
+            with self.subTest(workers=workers):
+                self.evaluate("--nthreads", str(workers))
+                rows = {row["Benchmark"]: row for row in self.read_results()}
+                self.assertEqual(rows["a_bad.circom"]["Result"], "error")
+                self.assertEqual(rows["a_bad.circom"]["Exit Code"], "1")
+                self.assertEqual(rows["a_bad.circom"]["Expectation"], "match")
+                self.assertIn("fixture compilation error: \ufffd", rows["a_bad.circom"]["Error Message"])
+                self.assertEqual(rows["z_good.circom"]["Result"], "success")
 
     def test_expected_outcomes_match_and_mismatch_in_serial_and_parallel_runs(self):
         cases = {
@@ -566,27 +597,12 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
     def test_git_provenance_records_revision_and_dirty_state(self):
         source = self.circuit("main.circom")
 
-        def git(*arguments):
-            return subprocess.check_output(
-                [
-                    "git", "-C", str(self.root),
-                    "-c", "user.name=Benchmark Test",
-                    "-c", "user.email=benchmark-test@example.invalid",
-                    "-c", "commit.gpgsign=false",
-                    "-c", "core.hooksPath=/dev/null",
-                    *arguments,
-                ],
-                text=True,
-                stderr=subprocess.PIPE,
-                timeout=10,
-            ).strip()
-
-        git("init", "--quiet")
+        self.git("init", "--quiet")
         origin = "https://example.invalid/benchmark-fixture.git"
-        git("remote", "add", "origin", origin)
-        git("add", "main.circom")
-        git("commit", "--quiet", "-m", "Fixture circuit")
-        revision = git("rev-parse", "HEAD")
+        self.git("remote", "add", "origin", origin)
+        self.git("add", "main.circom")
+        self.git("commit", "--quiet", "-m", "Fixture circuit")
+        revision = self.git("rev-parse", "HEAD")
         self.detect()
         entries = json.loads(self.metadata.read_text())
         self.assertEqual(entries[0]["repository"], origin)
@@ -612,24 +628,11 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         scripts = self.root / "scripts"
         shutil.copytree(REPOSITORY / "scripts", scripts, ignore=shutil.ignore_patterns("__pycache__"))
 
-        def git(*arguments):
-            return subprocess.check_output(
-                [
-                    "git", "-C", str(self.root),
-                    "-c", "user.name=Benchmark Test",
-                    "-c", "user.email=benchmark-test@example.invalid",
-                    "-c", "commit.gpgsign=false",
-                    "-c", "core.hooksPath=/dev/null",
-                    *arguments,
-                ],
-                text=True, stderr=subprocess.PIPE, timeout=10,
-            ).strip()
-
-        git("init", "--quiet")
-        git("config", "core.excludesFile", "/dev/null")
-        git("add", "main.circom", "scripts")
-        git("commit", "--quiet", "-m", "Fixture circuit")
-        revision = git("rev-parse", "HEAD")
+        self.git("init", "--quiet")
+        self.git("config", "core.excludesFile", "/dev/null")
+        self.git("add", "main.circom", "scripts")
+        self.git("commit", "--quiet", "-m", "Fixture circuit")
+        revision = self.git("rev-parse", "HEAD")
         self.detect()
 
         for output in (None, self.root / "reports [local]", self.root):
@@ -659,10 +662,10 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
 
                     source.write_text(original + "// local edit\n")
                     self.assertIs(evaluate(), True)
-                    git("add", "main.circom")
+                    self.git("add", "main.circom")
                     self.assertIs(evaluate(), True)
                     source.write_text(original)
-                    git("add", "main.circom")
+                    self.git("add", "main.circom")
 
                     # Unmanaged files still count, even within a mode directory.
                     note = destination / "concrete" / "notes.txt"
@@ -672,17 +675,14 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
                     self.assertIs(evaluate(), False)
                 finally:
                     source.write_text(original)
-                    git("add", "main.circom")
+                    self.git("add", "main.circom")
                     for mode in ("concrete", "templated"):
                         shutil.rmtree(destination / mode, ignore_errors=True)
 
     @unittest.skipUnless(shutil.which("git"), "Git is required for provenance tests")
     def test_git_status_exclusions_are_literal_and_repository_wide(self):
-        subprocess.run(["git", "init", "--quiet", str(self.root)], check=True)
-        subprocess.run(
-            ["git", "-C", str(self.root), "config", "core.excludesFile", "/dev/null"],
-            check=True,
-        )
+        self.git("init", "--quiet")
+        self.git("config", "core.excludesFile", "/dev/null")
         nested = self.root / "nested"
         nested.mkdir()
         output = self.root / "reports [local]"
@@ -706,14 +706,8 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
     def test_git_provenance_strips_url_userinfo(self):
         self.circuit("main.circom")
 
-        def git(*arguments):
-            subprocess.run(
-                ["git", "-C", str(self.root), *arguments],
-                check=True, capture_output=True, text=True, timeout=10,
-            )
-
-        git("init", "--quiet")
-        git("remote", "add", "origin", "https://example.invalid/repo.git")
+        self.git("init", "--quiet")
+        self.git("remote", "add", "origin", "https://example.invalid/repo.git")
         cases = [
             ("https://user:fake-token@example.invalid/repo.git", "https://example.invalid/repo.git"),
             ("https://fake-token@example.invalid/repo.git", "https://example.invalid/repo.git"),
@@ -725,7 +719,7 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         ]
         for origin, expected in cases:
             with self.subTest(origin=origin):
-                git("remote", "set-url", "origin", origin)
+                self.git("remote", "set-url", "origin", origin)
                 self.detect()
                 self.evaluate()
                 entries = json.loads(self.metadata.read_text())
