@@ -20,8 +20,8 @@ from benchmark_common import (
 ROOT = DEFAULT_ROOT
 DEFAULT_EXCLUDED_DIRS = frozenset(
     {
-        ".git", "node_modules", "llzk_outputs", "__pycache__", ".pytest_cache",
-        ".venv", "target", "build", "dist", "benchmark_reports",
+        ".git", "node_modules", "__pycache__", ".pytest_cache",
+        ".venv", "target", "build", "dist", "benchmark_results",
         ".artifacts",
     }
 )

@@ -156,7 +156,7 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.circuit("library.circom", "template Example() {}\n")
         self.circuit("fails/example.circom")
         self.circuit("tags/outputs/main.circom")
-        for directory in (".git", "node_modules", "llzk_outputs", "__pycache__"):
+        for directory in (".git", "node_modules", "benchmark_results", "__pycache__"):
             self.circuit(f"{directory}/ignored.circom")
         outside = self.workspace / "linked sources"
         outside.mkdir()
@@ -213,11 +213,12 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
             ["chosen/a.circom", "other/c.circom"],
         )
 
-    def test_default_metadata_is_shared_outside_the_source_and_caller_directories(self):
+    def test_default_metadata_and_results_are_shared_outside_source_and_caller(self):
         self.circuit("main.circom")
         tool_root = self.workspace / "benchmark tools"
         tool_root.mkdir()
         expected_metadata = tool_root / "metadata" / f"{self.root.name}.json"
+        self.output = tool_root / "benchmark_results" / self.root.name
         original_directory = Path.cwd()
         try:
             os.chdir(self.caller)
@@ -226,7 +227,6 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
                 self.assertTrue(expected_metadata.is_file())
                 self.assertEqual(circom_to_llzk_eval.main([
                     "--benchmark-dir", str(self.root),
-                    "--output-dir", "results",
                     "--circom-bin", str(self.compiler),
                     "--nthreads", "1",
                 ]), 0)
@@ -236,9 +236,42 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertEqual([row["Benchmark"] for row in self.read_results()], ["main.circom"])
         info = json.loads((self.output / "concrete" / "run_info.json").read_text())
         self.assertEqual(info["metadata_file"], str(expected_metadata))
+        self.assertEqual(info["options"]["output_dir"], str(self.output))
+        self.assertEqual(len(self.invocations()), 1)
         self.assertFalse((self.root / "benchmark_metadata.json").exists())
         self.assertFalse((self.root / "metadata").exists())
         self.assertFalse((self.caller / "metadata").exists())
+        self.assertFalse((self.root / "benchmark_results").exists())
+        self.assertFalse((self.caller / "benchmark_results").exists())
+
+    def test_default_self_results_use_suite_and_mode_with_custom_metadata(self):
+        self.circuit("main.circom")
+        self.write_metadata([{"path": "main.circom", "enabled": True}])
+        self.output = self.root / "benchmark_results" / "self"
+        original_directory = Path.cwd()
+        try:
+            os.chdir(self.caller)
+            with (
+                mock.patch.object(benchmark_common, "DEFAULT_ROOT", self.root),
+                mock.patch.object(circom_to_llzk_eval, "DEFAULT_ROOT", self.root),
+                contextlib.redirect_stdout(io.StringIO()),
+            ):
+                for mode in ("concrete", "templated"):
+                    with self.subTest(mode=mode):
+                        self.assertEqual(circom_to_llzk_eval.main([
+                            "--metadata-file", str(self.metadata),
+                            "--circom-bin", str(self.compiler),
+                            "--nthreads", "1",
+                            "--concrete" if mode == "concrete" else "--no-concrete",
+                        ]), 0)
+                        self.assertEqual([row["Benchmark"] for row in self.read_results(mode)], ["main.circom"])
+                        info = json.loads((self.output / mode / "run_info.json").read_text())
+                        self.assertEqual(info["options"]["output_dir"], str(self.output))
+                        self.assertEqual(info["options"]["mode"], mode)
+                        self.assertEqual(len(self.invocations(mode)), 1)
+        finally:
+            os.chdir(original_directory)
+        self.assertFalse((self.caller / "benchmark_results").exists())
 
     def test_metadata_defaults_for_self_external_sources_and_explicit_override(self):
         tool_root = self.workspace / "benchmark tools"
@@ -311,7 +344,7 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
         self.assertEqual(info["compiler"]["path"], str(self.compiler))
         self.assertIn("test fixture", info["compiler"]["version"])
         self.assertEqual([entry["path"] for entry in info["benchmarks"]], ["listed.circom"])
-        self.assertFalse((self.caller / "llzk_outputs").exists())
+        self.assertFalse((self.caller / "benchmark_results").exists())
 
     def test_output_paths_and_modes_do_not_collide(self):
         sources = ["a/b.circom", "a_b.circom", "a.circom"]
@@ -575,6 +608,9 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
     def test_evaluator_provenance_ignores_managed_outputs(self):
         source = self.circuit("main.circom")
         original = source.read_text()
+        # Run a temporary copy so default self outputs stay within the fixture checkout.
+        scripts = self.root / "scripts"
+        shutil.copytree(REPOSITORY / "scripts", scripts, ignore=shutil.ignore_patterns("__pycache__"))
 
         def git(*arguments):
             return subprocess.check_output(
@@ -591,14 +627,14 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
 
         git("init", "--quiet")
         git("config", "core.excludesFile", "/dev/null")
-        git("add", "main.circom")
+        git("add", "main.circom", "scripts")
         git("commit", "--quiet", "-m", "Fixture circuit")
         revision = git("rev-parse", "HEAD")
         self.detect()
 
         for output in (None, self.root / "reports [local]", self.root):
             with self.subTest(output=output):
-                destination = output if output is not None else self.root / "llzk_outputs"
+                destination = output if output is not None else self.root / "benchmark_results" / "self"
 
                 def evaluate(mode="concrete"):
                     arguments = [
@@ -611,7 +647,7 @@ class ExternalBenchmarkWorkflowTests(unittest.TestCase):
                         arguments.extend(["--output-dir", output])
                     if mode == "templated":
                         arguments.append("--no-concrete")
-                    self.run_script(EVALUATOR, *arguments)
+                    self.run_script(scripts / EVALUATOR.name, *arguments)
                     info = json.loads((destination / mode / "run_info.json").read_text())
                     self.assertEqual(info["source"]["commit"], revision)
                     return info["source"]["dirty"]

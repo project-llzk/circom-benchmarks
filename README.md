@@ -67,7 +67,6 @@ python3 scripts/benchmark_detector.py --benchmark_dir ../circomlib
 
 python3 scripts/circom_to_llzk_eval.py \
   --benchmark_dir ../circomlib \
-  --output-dir benchmark_reports/circomlib \
   --circom-bin ../circom/target/debug/circom \
   --timeout 10 --nthreads 4
 
@@ -78,17 +77,42 @@ python3 scripts/benchmark_detector.py \
 python3 scripts/circom_to_llzk_eval.py \
   --benchmark_dir ../costa_circom_tests \
   --metadata-file metadata/costa_tests.json \
-  --output-dir benchmark_reports/costa_circom_tests \
   --circom-bin ../circom/target/debug/circom \
   --timeout 10 --nthreads 4
 ```
 
 ## Results
 
-`--output-dir` defaults to `<source-root>/llzk_outputs`. Each mode has its own
-directory containing circuit artifacts, a timing CSV, and `run_info.json` with
-compiler settings and source provenance. Rerunning a mode replaces its managed
-artifacts and results; use separate output directories to retain multiple runs.
+Results default to this repository's `benchmark_results/<suite>/<mode>/`,
+regardless of the caller's working directory or where the benchmark sources live.
+The suite is `self` for this repository's sources and the source directory's name
+for external sources. An explicit `--metadata-file` does not change the suite name.
+The mode is `concrete` by default, or `templated` with `--no-concrete`:
+
+```text
+benchmark_results/
+├── self/
+│   ├── concrete/
+│   └── templated/
+├── circomlib/
+│   └── concrete/
+│   └── templated/
+└── costa_circom_tests/
+    └── concrete/
+    └── templated/
+```
+
+Each mode directory contains `circuits/` with the generated LLZK artifacts,
+`circom_benchmarks_results_<mode>.csv` with timings and outcomes, and `run_info.json`
+with compiler settings and source provenance. Only the requested suite and mode
+are created.
+
+`--output-dir PATH` overrides the suite directory: results go directly under
+`PATH/<mode>/`, with relative paths resolved from the caller's working directory.
+Rerunning a mode replaces its managed artifacts and results; use separate output
+directories to retain multiple runs or distinguish external checkouts with the
+same directory name. `benchmark_results/` is ignored by Git and excluded from
+benchmark discovery.
 
 The CSV records actual `Result`, `Expected`, `Expectation` (`match` or `mismatch`),
 exit code, timing, and up to 4,000 characters of compiler diagnostics. An expected

@@ -28,6 +28,15 @@ def resolve_metadata_path(root: Path, value=None) -> Path:
     return Path(value).expanduser().resolve()
 
 
+def resolve_output_dir(root: Path, value=None) -> Path:
+    """Default to this repository's suite results directory; explicit paths use cwd."""
+    if value is None:
+        root = Path(root).expanduser().resolve()
+        name = "self" if root == DEFAULT_ROOT else root.name
+        return (DEFAULT_ROOT / "benchmark_results" / name).resolve()
+    return Path(value).expanduser().resolve()
+
+
 def load_metadata(path: Path) -> list:
     """Validate the portable manifest schema without inspecting circuit files."""
     with Path(path).open(encoding="utf-8") as handle:
